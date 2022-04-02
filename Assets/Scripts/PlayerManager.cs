@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour
 		Vector3 mousePos = Input.mousePosition;
 		{
 			selectedTower.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
-			selectedTower.transform.position = new Vector3(RoundToNearestGridX(selectedTower.transform.position.x + 0.125f), RoundToNearestGridY(selectedTower.transform.position.y), 0);
+			selectedTower.transform.position = new Vector3(RoundToNearestGridX(selectedTower.transform.position.x + 0.125f), RoundToNearestGridY(selectedTower.transform.position.y), -1);
 		}
 
 		if (selectedTower.GetComponent<BoxCollider2D>().IsTouchingLayers()) {
