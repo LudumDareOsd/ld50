@@ -16,22 +16,23 @@ public class EnemyManager : MonoBehaviour
 		} else {
 			EnemyManager.instance = this;
 		}
+
+        StartCoroutine(SpawnEnemies());
 	}
 
 
-    // Start is called before the first frame update
-    void Start()
+    public IEnumerator SpawnEnemies()
     {
+        while(true)
+        {
+            var spawn = Instantiate(enemyPrefabs[0], transform);
+            // var follow = spawn.GetComponent<FollowPath>();
+            // var enemy = spawn.GetComponent<Enemy>();
+            // spawn.transform.SetParent(transform);
 
+            yield return new WaitForSeconds(2);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-
-    public void SpawnEnemy() {
-
-    }
 }
