@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1194878360926915499}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HellHog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.1
-  acumulatedSpeed: 0
+  moveSpeed: 0.7
+  accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,4 +153,4 @@ MonoBehaviour:
   - {fileID: -2641289975660960506, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
   - {fileID: 5974394225070375687, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
   - {fileID: 7251178696337941055, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  switchTime: 0.5
+  switchTime: 0.35

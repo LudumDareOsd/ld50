@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1194878360926915499}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LowerDemon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.2
+  moveSpeed: 0.4
   accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
@@ -153,4 +153,4 @@ MonoBehaviour:
   - {fileID: -7315308852180930845, guid: 7a90efce69739b747b2f56eaaa2cba16, type: 3}
   - {fileID: 2041523543509167330, guid: 7a90efce69739b747b2f56eaaa2cba16, type: 3}
   - {fileID: 9203240345357241478, guid: 7a90efce69739b747b2f56eaaa2cba16, type: 3}
-  switchTime: 0.5
+  switchTime: 0.35
