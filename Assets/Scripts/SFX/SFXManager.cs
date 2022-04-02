@@ -11,12 +11,9 @@ public class SFXManager : MonoBehaviour
 
     private bool isUsingAudioSource;
 
-    [SerializeField]
     public AudioClip[] impacts;
 
-    private int impactsIndex = 0;
-
-    public AudioClip creatureScream1;
+    public AudioClip[] smallCreatureScreams;
 
     private void Awake()
     {
@@ -43,14 +40,23 @@ public class SFXManager : MonoBehaviour
 
     }
 
+
     public void TriggerImpactNoise()
     {
-        if (!isUsingAudioSource)
+        if (!isUsingAudioSource && impacts.Length > 0)
         {
-            StartCoroutine(PlayClipDebounced(impacts[impactsIndex]));
-            impactsIndex = impactsIndex == impacts.Length - 1 ? 0 : impactsIndex + 1;
+            StartCoroutine(PlayClipDebounced(impacts[new System.Random().Next(impacts.Length)]));
         }
     }
+
+    public void TriggerSmallCreatureScream()
+    {
+        if (!isUsingAudioSource && smallCreatureScreams.Length > 0)
+        {
+            StartCoroutine(PlayClipDebounced(smallCreatureScreams[new System.Random().Next(smallCreatureScreams.Length)]));
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
