@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af1597e2837c0734ab6412bbf8cbfbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 3
   speed: 1
 --- !u!1 &3441218710437922257
 GameObject:

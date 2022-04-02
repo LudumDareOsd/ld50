@@ -6,19 +6,31 @@ public class Arrow : MonoBehaviour, Projectile
     public float speed = 0.1f;
 
     private Enemy target;
+    private Vector3 latestTargetPos;
 
     public void Update() {
+        var step = speed * Time.deltaTime;
+
+
+
         if (target == null) {
-            Destroy(gameObject);
+            transform.position = Vector2.MoveTowards(transform.position, latestTargetPos, step);
+
+            if (Vector2.Distance(transform.position, latestTargetPos) < 0.05f) {
+                Destroy(gameObject);
+            }
         } else {
-            var step = speed * Time.deltaTime;
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step); 
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
+
+            latestTargetPos = target.transform.position;
 
             if (Vector2.Distance(transform.position, target.transform.position) < 0.05f) {
                 target.TakeDamage(damage);
                 Destroy(gameObject);
             }
         }
+
+        
     }
 
     public void SetTarget(Enemy enemy) {
