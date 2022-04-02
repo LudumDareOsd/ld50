@@ -37,13 +37,11 @@ public class PlayerManager : MonoBehaviour
 			selectedTower.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.2f, 0.2f, 1);
 		} else {
 			selectedTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-		}
-		
 
-
-		if (Input.GetMouseButtonDown(0)) {
-			if (tower != null) {
-				Instantiate(Resources.Load(tower.name) as GameObject, selectedTower.transform.position, selectedTower.transform.rotation);
+			if (Input.GetMouseButtonDown(0)) {
+				if (tower != null) {
+					Instantiate(Resources.Load(tower.name) as GameObject, selectedTower.transform.position, selectedTower.transform.rotation);
+				}
 			}
 		}
 
