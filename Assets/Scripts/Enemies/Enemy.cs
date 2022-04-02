@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
         if (Health <= 0.0f)
         {
             // Die
+            Destroy(gameObject);
         }
     }
 

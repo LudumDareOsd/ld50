@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1194878360926915499}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
+  - component: {fileID: 8173586817325258565}
   m_Layer: 7
   m_Name: HighterDemon
   m_TagString: Untagged
@@ -132,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.2
+  moveSpeed: 0.5
   accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
@@ -153,4 +154,20 @@ MonoBehaviour:
   - {fileID: -3435790398689038765, guid: a20e98858dcb62f41be81dc7268c3f58, type: 3}
   - {fileID: -2017274651528118984, guid: a20e98858dcb62f41be81dc7268c3f58, type: 3}
   - {fileID: -8222765375648704801, guid: a20e98858dcb62f41be81dc7268c3f58, type: 3}
-  switchTime: 0.5
+  switchTime: 0.35
+--- !u!58 &8173586817325258565
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194878360926915501}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1

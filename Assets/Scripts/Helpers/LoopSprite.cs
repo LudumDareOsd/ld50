@@ -14,6 +14,9 @@ public class LoopSprite : MonoBehaviour
 	private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb;
 
+    private int dir = 0;
+    bool flip = false;
+
 	void Awake()
     {
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,20 +24,23 @@ public class LoopSprite : MonoBehaviour
 		StartCoroutine(SwitchSprite(switchTime));
 	}
 
-	public IEnumerator SwitchSprite(float duration)
-	{
-        var dir = gameObject.GetComponent<FollowPath>().GetDirection();
-        bool flip = false;
+    void LateUpdate()
+    {
+        dir = GetComponent<FollowPath>().GetDirection();
         if (dir > 4)
         {
-            dir = 4;
             flip = true;
         }
 
-        currentSprite = (currentSprite >= 1) ? 0 : currentSprite + 1;
-        // Debug.Log(dir + currentSprite);
-		spriteRenderer.sprite = sprites[dir + currentSprite];
+        spriteRenderer.sprite = sprites[dir + currentSprite];
         spriteRenderer.flipX = flip;
+    }
+
+	public IEnumerator SwitchSprite(float duration)
+	{
+        var dir = GetComponent<FollowPath>().GetDirection();
+
+        currentSprite = (currentSprite >= 1) ? 0 : currentSprite + 1;
 
 		yield return new WaitForSeconds(duration);
 
