@@ -6,6 +6,7 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 	private SelectedTower tower;
+	private GameObject selectedTower;
 
 	private void Awake() {
 
@@ -13,8 +14,8 @@ public class PlayerManager : MonoBehaviour
 			Destroy(this);
 		} else {
 			PlayerManager.instance = this;
+			GameObject.Find("SelectedTower");
 		}
-
 	}
 
 

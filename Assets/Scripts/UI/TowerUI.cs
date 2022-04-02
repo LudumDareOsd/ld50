@@ -11,7 +11,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler
 
 		var selectTower = new SelectedTower();
 		selectTower.name = tower.name;
-		selectTower.sprite = tower.GetComponent<Sprite>();
+		selectTower.sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
 
 		PlayerManager.instance.SelectTower(selectTower);
 
