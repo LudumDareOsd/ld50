@@ -7,7 +7,9 @@ public class FollowPath : MonoBehaviour
 {
     [SerializeField]
     public float moveSpeed = 2f;
+    public float accumulatedDistance = 0f;
 
+    private Vector2 lastPosition;
     private Transform currentTarget;
     private Rigidbody2D rb;
 
@@ -19,6 +21,7 @@ public class FollowPath : MonoBehaviour
             currentTarget = child;
             if(child.GetComponent<Waypoint>().startPoint) {
                 transform.position = currentTarget.position;
+                lastPosition = transform.position;
                 break;
             }
         }
@@ -33,12 +36,15 @@ public class FollowPath : MonoBehaviour
 
     private void Move()
     {
-        // transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
 
-		// if(currentTarget == null) return;
+		if(currentTarget == null) return;
+
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.fixedDeltaTime);
+        accumulatedDistance += Vector2.Distance(lastPosition, transform.position);
+        lastPosition = transform.position;
 
 		// Vector3 deltaPos = currentTarget.position - transform.position;
-		// rb.velocity = 1f/Time.fixedDeltaTime * deltaPos * Mathf.Pow(1f, 90f*Time.fixedDeltaTime);
+		// rb.velocity = 1f/Time.fixedDeltaTime * deltaPos * Mathf.Pow(0.01f, 90f*Time.fixedDeltaTime);
 
 		// Quaternion deltaRot = currentTarget.rotation * Quaternion.Inverse(transform.rotation);
 
@@ -51,11 +57,8 @@ public class FollowPath : MonoBehaviour
 
 		// if (angle != 0) rb.angularVelocity = (1f/Time.fixedDeltaTime * angle * axis * 0.01745329251994f * Mathf.Pow(1f, 90f*Time.fixedDeltaTime));
 
-
-        if (Vector2.Distance(transform.position, currentTarget.position) < 0.4f)
+        if (Vector2.Distance(transform.position, currentTarget.position) < 0.01f)
         {
-            Debug.Log($"distance {Vector2.Distance(transform.position, currentTarget.position)}");
-
             if(currentTarget.gameObject.GetComponent<Waypoint>().endPoint) {
                 // The End Is Nigh
                 // TODO:Church TAKE DAMAGE
@@ -63,7 +66,7 @@ public class FollowPath : MonoBehaviour
             }
 
             currentTarget = currentTarget.gameObject.GetComponent<Waypoint>().GetNextWaypoint();
-            Debug.Log("Getting next waypoint");
+            Debug.Log($"Getting next waypoint accumulatedDistance {accumulatedDistance}");
         }
     }
 }

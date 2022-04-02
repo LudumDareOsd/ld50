@@ -8,19 +8,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     public float Health = 10f;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void TakeDamage(float damage)
     {
         Health -= damage;
@@ -28,6 +15,11 @@ public class Enemy : MonoBehaviour
         {
             // Die
         }
+    }
+
+    public float GetAccumulatedDistance()
+    {
+        return GetComponent<FollowPath>().accumulatedDistance;
     }
 
 }

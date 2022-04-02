@@ -23,6 +23,8 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
+        SFXManager.Instance.PlayHorn();
+
         while(true)
         {
             var spawn = Instantiate(enemyPrefabs[0], transform);
