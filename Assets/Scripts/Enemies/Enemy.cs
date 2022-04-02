@@ -6,12 +6,13 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField]
-    public float Health = 10f;
+    public float health = 10f;
+    public string deathSound, spawnSound;
 
     public void TakeDamage(float damage)
     {
-        Health -= damage;
-        if (Health <= 0.0f)
+        health -= damage;
+        if (health <= 0.0f)
         {
             // Die
             Destroy(gameObject);
