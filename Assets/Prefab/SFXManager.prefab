@@ -148,3 +148,5 @@ MonoBehaviour:
   smallCreatureScreams:
   - {fileID: 8300000, guid: 8dcd9bed1639f91408968e050d16a5a3, type: 3}
   - {fileID: 8300000, guid: dfd8a315d27426743b1c1ca4f744d09c, type: 3}
+  - {fileID: 8300000, guid: eac33767fd0b20240afb5eaac41f885c, type: 3}
+  WaveStartHorn: {fileID: 8300000, guid: 1388a70f120492a4e9b484a3ec8a49c8, type: 3}
