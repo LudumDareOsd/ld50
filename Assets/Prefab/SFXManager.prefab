@@ -145,4 +145,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c453bcd6bea3054fa0a881534530d15, type: 3}
   - {fileID: 8300000, guid: 45856706ffdc62d41a65e5ec6ba87fec, type: 3}
   - {fileID: 8300000, guid: b38e82b06cfd3934a93bc2829e3ead02, type: 3}
-  creatureScream1: {fileID: 8300000, guid: 8dcd9bed1639f91408968e050d16a5a3, type: 3}
+  smallCreatureScreams:
+  - {fileID: 8300000, guid: 8dcd9bed1639f91408968e050d16a5a3, type: 3}
+  - {fileID: 8300000, guid: dfd8a315d27426743b1c1ca4f744d09c, type: 3}
