@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,12 @@ public class SFXManager : MonoBehaviour
 
     public AudioSource audioSource;
 
-    public AudioClip impactBody1;
+    private bool isUsingAudioSource;
 
-    public AudioClip impactBody2;
+    [SerializeField]
+    public AudioClip[] impacts;
 
-    public AudioClip impactBody3;
+    private int impactsIndex = 0;
 
     public AudioClip creatureScream1;
 
@@ -28,10 +30,26 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayClipDebounced(AudioClip clip)
+    {
+
+        audioSource.PlayOneShot(clip);
+
+        isUsingAudioSource = true;
+
+        yield return new WaitForSeconds(.3f);
+
+        isUsingAudioSource = false;
+
+    }
+
     public void TriggerImpactNoise()
     {
-        audioSource.PlayOneShot(impactBody1);
-
+        if (!isUsingAudioSource)
+        {
+            StartCoroutine(PlayClipDebounced(impacts[impactsIndex]));
+            impactsIndex = impactsIndex == impacts.Length - 1 ? 0 : impactsIndex + 1;
+        }
     }
 
     // Start is called before the first frame update
