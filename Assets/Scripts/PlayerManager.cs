@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static PlayerManager instance;
+	public static PlayerManager instance;
 	private SelectedTower tower;
 	private GameObject selectedTower;
+
+	private float gridSize = 0.125f;
 
 	private void Awake() {
 
@@ -28,8 +30,36 @@ public class PlayerManager : MonoBehaviour
 		Vector3 mousePos = Input.mousePosition;
 		{
 			selectedTower.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
-			selectedTower.transform.position = new Vector3(selectedTower.transform.position.x, selectedTower.transform.position.y, 0);
+			selectedTower.transform.position = new Vector3(RoundToNearestGridX(selectedTower.transform.position.x + 0.125f), RoundToNearestGridY(selectedTower.transform.position.y), 0);
 		}
 
+		if (Input.GetMouseButtonDown(0)) {
+			if (tower != null) {
+				Instantiate(Resources.Load(tower.name) as GameObject, selectedTower.transform.position, selectedTower.transform.rotation);
+			}
+		}
+
+		if (Input.GetMouseButtonDown(1)) {
+			tower = null;
+			selectedTower.GetComponent<SpriteRenderer>().sprite = null;
+		}
+	}
+
+	float RoundToNearestGridX(float pos) {
+		float xDiff = pos % gridSize;
+		pos -= (xDiff + 0.125f);
+		if (xDiff > (gridSize / 2)) {
+			pos += gridSize;
+		}
+		return pos;
+	}
+
+	float RoundToNearestGridY(float pos) {
+		float xDiff = pos % gridSize;
+		pos -= (xDiff);
+		if (xDiff > (gridSize / 2)) {
+			pos += gridSize;
+		}
+		return pos;
 	}
 }
