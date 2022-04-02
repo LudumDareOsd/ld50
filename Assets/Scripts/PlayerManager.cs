@@ -33,6 +33,14 @@ public class PlayerManager : MonoBehaviour
 			selectedTower.transform.position = new Vector3(RoundToNearestGridX(selectedTower.transform.position.x + 0.125f), RoundToNearestGridY(selectedTower.transform.position.y), 0);
 		}
 
+		if (selectedTower.GetComponent<BoxCollider2D>().IsTouchingLayers()) {
+			selectedTower.GetComponent<SpriteRenderer>().color = new Color(0.8f, 0.2f, 0.2f, 1);
+		} else {
+			selectedTower.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+		}
+		
+
+
 		if (Input.GetMouseButtonDown(0)) {
 			if (tower != null) {
 				Instantiate(Resources.Load(tower.name) as GameObject, selectedTower.transform.position, selectedTower.transform.rotation);
