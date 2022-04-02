@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class TargetSeeker : MonoBehaviour
 {
+	public float range;
 	private Enemy target = null;
 	private CircleCollider2D targetCollider;
 	private ContactFilter2D contactFilter;
 
 	private void Awake() {
 		targetCollider = GetComponent<CircleCollider2D>();
+		targetCollider.radius = range;
 		contactFilter = new ContactFilter2D();
-		contactFilter.layerMask = LayerMask.GetMask("Target");
+		contactFilter.SetLayerMask(LayerMask.GetMask("Target"));
+		contactFilter.useLayerMask = true;
+		contactFilter.useTriggers = true;
+	}
+
+	public Enemy GetTarget() {
+		return target;
 	}
 
 	public void Update() {
@@ -20,10 +28,39 @@ public class TargetSeeker : MonoBehaviour
 			var colliders = new List<Collider2D>();
 			targetCollider.OverlapCollider(contactFilter, colliders);
 
-			Collider2D farthestCollider = null;
+			Enemy farthestEnemy = null;
 
-			foreach(var collider in colliders) {
-				
+			foreach (var collider in colliders) {
+
+				var enemy = collider.gameObject.GetComponent<Enemy>();
+
+				if (farthestEnemy == null) {
+					farthestEnemy = enemy;
+				} else {
+					if (farthestEnemy.GetAccumulatedDistance() < enemy.GetAccumulatedDistance()) {
+						farthestEnemy = enemy;
+					}
+				}
+			}
+
+			target = farthestEnemy;
+		} else {
+			var colliders = new List<Collider2D>();
+			targetCollider.OverlapCollider(contactFilter, colliders);
+
+			var isWithinRange = false;
+
+			foreach (var collider in colliders) {
+				var enemyColl = collider.GetComponent<Enemy>();
+
+				if (enemyColl.Equals(target)) {
+					isWithinRange = true;
+					break;
+				}
+			}
+
+			if (!isWithinRange) {
+				target = null;
 			}
 		}
 

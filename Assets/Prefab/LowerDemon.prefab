@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1194878360926915499}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
+  - component: {fileID: -8550336292977150255}
   m_Layer: 7
   m_Name: LowerDemon
   m_TagString: Untagged
@@ -154,3 +155,19 @@ MonoBehaviour:
   - {fileID: 2041523543509167330, guid: 7a90efce69739b747b2f56eaaa2cba16, type: 3}
   - {fileID: 9203240345357241478, guid: 7a90efce69739b747b2f56eaaa2cba16, type: 3}
   switchTime: 0.35
+--- !u!58 &-8550336292977150255
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194878360926915501}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.1
