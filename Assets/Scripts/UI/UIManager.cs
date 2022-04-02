@@ -26,6 +26,17 @@ public class UIManager : MonoBehaviour
 		}
 	}
 
+	public void SetBanished(string banished) {
+		this.banished.text = banished;
+	}
+
+	public void SetMoney(string money) {
+		this.money.text = money;
+	}
+
+	public void SetWave(string wave) {
+		this.wave.text = wave;
+	}
 
 
 }
