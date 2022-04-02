@@ -14,7 +14,6 @@ public class Waypoint : MonoBehaviour
     void Awake()
     {
         DestroyImmediate(GetComponent<SpriteRenderer>());
-        Debug.Log($"Init checkpoint with {nextWaypoint.Length} next");
     }
 
     void OnDrawGizmos()
@@ -34,7 +33,6 @@ public class Waypoint : MonoBehaviour
     public Transform GetNextWaypoint()
     {
         if(currentWaypoint >= nextWaypoint.Length) currentWaypoint = 0;
-        Debug.Log($"returning checkpoint {currentWaypoint}");
         return nextWaypoint[currentWaypoint++];
     }
 
