@@ -9,7 +9,7 @@ public class Arrow : MonoBehaviour, Projectile
 
     public void Update() {
         if (target == null) {
-            Destroy(this);
+            Destroy(gameObject);
         } else {
             var step = speed * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step); 
