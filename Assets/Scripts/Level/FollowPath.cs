@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent (typeof(Rigidbody2D))]
 public class FollowPath : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 2f;
+    public float moveSpeed = 2f;
 
-    public Transform currentTarget;
+    private Transform currentTarget;
+    private Rigidbody2D rb;
 
     void Awake()
     {
@@ -17,25 +19,38 @@ public class FollowPath : MonoBehaviour
             currentTarget = child;
             if(child.GetComponent<Waypoint>().startPoint) {
                 transform.position = currentTarget.position;
-                Debug.Log("Setting target");
                 break;
             }
-            Debug.Log("skipping target");
         }
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
-	private void Start ()
-    {
-	}
-
-	private void Update ()
-    {
+	void FixedUpdate ()
+	{
         Move();
 	}
 
     private void Move()
     {
-        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
+        // transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
+
+		// if(currentTarget == null) return;
+
+		// Vector3 deltaPos = currentTarget.position - transform.position;
+		// rb.velocity = 1f/Time.fixedDeltaTime * deltaPos * Mathf.Pow(1f, 90f*Time.fixedDeltaTime);
+
+		// Quaternion deltaRot = currentTarget.rotation * Quaternion.Inverse(transform.rotation);
+
+		// float angle;
+		// Vector3 axis;
+
+		// deltaRot.ToAngleAxis(out angle, out axis);
+
+		// if (angle > 180.0f) angle -= 360.0f;
+
+		// if (angle != 0) rb.angularVelocity = (1f/Time.fixedDeltaTime * angle * axis * 0.01745329251994f * Mathf.Pow(1f, 90f*Time.fixedDeltaTime));
+
 
         if (Vector2.Distance(transform.position, currentTarget.position) < 0.4f)
         {
