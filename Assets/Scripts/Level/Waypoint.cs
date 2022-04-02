@@ -5,7 +5,7 @@ using UnityEngine;
 [ExecuteAlways]
 public class Waypoint : MonoBehaviour
 {
-    public Transform[] nextWaypoint;
+    public Transform[] nextWaypoint = new Transform[0];
     public bool startPoint = false;
     public bool endPoint = false;
 
@@ -15,6 +15,20 @@ public class Waypoint : MonoBehaviour
     {
         DestroyImmediate(GetComponent<SpriteRenderer>());
         Debug.Log($"Init checkpoint with {nextWaypoint.Length} next");
+    }
+
+    void OnDrawGizmos()
+    {
+        // Debug.Log($"{nextWaypoint.Length} len");
+        // if(nextWaypoint.Length < 1) return;
+
+        foreach (Transform next in nextWaypoint)
+        {
+            if(next != null) {
+                Debug.DrawLine(transform.position, next.position, Color.green);
+            // Debug.DrawLine(transform.position, Camera.main.WorldToScreenPoint(next.position), Color.green);
+            }
+        }
     }
 
     public Transform GetNextWaypoint()

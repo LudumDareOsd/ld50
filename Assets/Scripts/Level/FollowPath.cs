@@ -37,14 +37,13 @@ public class FollowPath : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, currentTarget.position) < 10f)
+        if (Vector2.Distance(transform.position, currentTarget.position) < 0.4f)
         {
             Debug.Log($"distance {Vector2.Distance(transform.position, currentTarget.position)}");
 
             if(currentTarget.gameObject.GetComponent<Waypoint>().endPoint) {
                 // The End Is Nigh
                 // TODO:Church TAKE DAMAGE
-
                 Destroy(gameObject);
             }
 
