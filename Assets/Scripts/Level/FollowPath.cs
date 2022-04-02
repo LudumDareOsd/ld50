@@ -12,6 +12,7 @@ public class FollowPath : MonoBehaviour
     private Vector2 lastPosition;
     private Transform currentTarget;
     private Rigidbody2D rb;
+    private float moveAngle = 0f;
 
     void Awake()
     {
@@ -36,26 +37,14 @@ public class FollowPath : MonoBehaviour
 
     private void Move()
     {
-
 		if(currentTarget == null) return;
 
         transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.fixedDeltaTime);
+
         accumulatedDistance += Vector2.Distance(lastPosition, transform.position);
+        moveAngle = GetAngle(lastPosition, transform.position);
         lastPosition = transform.position;
 
-		// Vector3 deltaPos = currentTarget.position - transform.position;
-		// rb.velocity = 1f/Time.fixedDeltaTime * deltaPos * Mathf.Pow(0.01f, 90f*Time.fixedDeltaTime);
-
-		// Quaternion deltaRot = currentTarget.rotation * Quaternion.Inverse(transform.rotation);
-
-		// float angle;
-		// Vector3 axis;
-
-		// deltaRot.ToAngleAxis(out angle, out axis);
-
-		// if (angle > 180.0f) angle -= 360.0f;
-
-		// if (angle != 0) rb.angularVelocity = (1f/Time.fixedDeltaTime * angle * axis * 0.01745329251994f * Mathf.Pow(1f, 90f*Time.fixedDeltaTime));
 
         if (Vector2.Distance(transform.position, currentTarget.position) < 0.01f)
         {
@@ -66,7 +55,41 @@ public class FollowPath : MonoBehaviour
             }
 
             currentTarget = currentTarget.gameObject.GetComponent<Waypoint>().GetNextWaypoint();
-            Debug.Log($"Getting next waypoint accumulatedDistance {accumulatedDistance}");
+            // Debug.Log($"Getting next waypoint GetDirection() {GetDirection()}");
         }
+    }
+
+    public int GetDirection()
+    {
+        if (moveAngle >= 60 && moveAngle <= 120)
+        {
+            // print("N");
+            return 0;
+        }
+        if (moveAngle >= 240 && moveAngle <= 300)
+        {
+            // print("S");
+            return 2;
+        }
+        if (moveAngle >= 330 && moveAngle <= 360 || moveAngle >= 0 && moveAngle <= 30)
+        {
+            // print("E");
+            return 4;
+        }
+        if (moveAngle >= 150 && moveAngle <= 210)
+        {
+            // print("W");
+            return 6;
+        }
+        return 0;
+    }
+
+    private float GetAngle(Vector2 A, Vector2 B)
+    {
+        var delta = B - A;
+        var angleRadians = Mathf.Atan2(delta.y, delta.x);
+        var angleDegrees = angleRadians * Mathf.Rad2Deg;
+        if (angleDegrees < 0) angleDegrees += 360;
+        return angleDegrees;
     }
 }
