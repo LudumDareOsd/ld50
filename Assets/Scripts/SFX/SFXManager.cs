@@ -7,15 +7,33 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance;
 
-    public AudioSource audioSource;
+    public AudioSource defaultSource;
 
-    private bool isUsingAudioSource;
+    public AudioSource beingAudioSource;
 
-    public AudioClip[] impacts;
+    public AudioSource impactAudioSource;
 
-    public AudioClip[] smallCreatureScreams;
+    private bool isUsingBeingSource;
+
+    private bool isUsingImpactSource;
+
+    public AudioClip[] singleImpacts;
+
+    public AudioClip[] slowImpacts;
+
+    public AudioClip[] aoeImpacts;
+
+    public AudioClip[] hellHogSounds;
+
+    public AudioClip[] lesserDemonSounds;
+
+    public AudioClip[] higherDemonSounds;
+
+    public AudioClip[] hellPriestSounds;
 
     public AudioClip WaveStartHorn;
+
+    public AudioClip GateDamage;
 
     private void Awake()
     {
@@ -29,39 +47,68 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayClipDebounced(AudioClip clip)
+    private IEnumerator PlayBeingClipDebounced(AudioClip clip, float debounceTime = 0.3f)
     {
 
-        audioSource.PlayOneShot(clip);
+        impactAudioSource.PlayOneShot(clip);
 
-        isUsingAudioSource = true;
+        isUsingBeingSource = true;
 
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(debounceTime);
 
-        isUsingAudioSource = false;
+        isUsingBeingSource = false;
 
     }
 
-
-    public void TriggerImpactNoise()
+    private IEnumerator PlayImpactClipDebounced(AudioClip clip, float debounceTime = 0.3f)
     {
-        if (!isUsingAudioSource && impacts.Length > 0)
+
+        impactAudioSource.PlayOneShot(clip);
+
+        isUsingImpactSource = true;
+
+        yield return new WaitForSeconds(debounceTime);
+
+        isUsingImpactSource = false;
+
+    }
+
+    private void TriggerBeingSound(AudioClip[] beingSounds)
+    {
+        if (!isUsingBeingSource && beingSounds.Length > 0)
         {
-            StartCoroutine(PlayClipDebounced(impacts[new System.Random().Next(impacts.Length)]));
+            StartCoroutine(PlayBeingClipDebounced(beingSounds[new System.Random().Next(beingSounds.Length)]));
         }
     }
 
-    public void TriggerSmallCreatureScream()
+    public void TriggerImpactSound(AudioClip[] impactSounds)
     {
-        if (!isUsingAudioSource && smallCreatureScreams.Length > 0)
+        if (!isUsingImpactSource && impactSounds.Length > 0)
         {
-            StartCoroutine(PlayClipDebounced(smallCreatureScreams[new System.Random().Next(smallCreatureScreams.Length)]));
+            StartCoroutine(PlayImpactClipDebounced(impactSounds[new System.Random().Next(impactSounds.Length)]));
         }
     }
 
-    public void PlayHorn(){
-        audioSource.PlayOneShot(WaveStartHorn);
-    }
+    public void TriggerHellHogSound() => TriggerBeingSound(hellHogSounds);
+
+    public void TriggerLesserDemonSound() => TriggerBeingSound(lesserDemonSounds);
+
+    public void TriggerHigherDemonSound() => TriggerBeingSound(higherDemonSounds);
+
+
+    public void TriggerHellPriestSound() => TriggerBeingSound(hellPriestSounds);
+
+    public void TriggerSingleImpactSound() => TriggerImpactSound(singleImpacts);
+
+    public void TriggerSlowSound() => TriggerImpactSound(slowImpacts);
+
+    public void TriggerAoeSound() => TriggerImpactSound(aoeImpacts);
+
+
+    public void PlayHorn() => defaultSource.PlayOneShot(WaveStartHorn);
+
+    public void PlayGateDamage() => defaultSource.PlayOneShot(GateDamage);
+
 
 
     // Start is called before the first frame update
