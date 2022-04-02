@@ -14,13 +14,22 @@ public class PlayerManager : MonoBehaviour
 			Destroy(this);
 		} else {
 			PlayerManager.instance = this;
-			GameObject.Find("SelectedTower");
+			selectedTower = GameObject.Find("SelectedTower");
 		}
 	}
 
-
 	public void SelectTower(SelectedTower tower) {
 		this.tower = tower;
+		selectedTower.GetComponent<SpriteRenderer>().sprite = tower.sprite;
 	}
 
+	public void Update() {
+
+		Vector3 mousePos = Input.mousePosition;
+		{
+			selectedTower.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+			selectedTower.transform.position = new Vector3(selectedTower.transform.position.x, selectedTower.transform.position.y, 0);
+		}
+
+	}
 }
