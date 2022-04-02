@@ -15,6 +15,8 @@ public class SFXManager : MonoBehaviour
 
     public AudioClip[] smallCreatureScreams;
 
+    public AudioClip WaveStartHorn;
+
     private void Awake()
     {
         if (Instance != null)
@@ -55,6 +57,10 @@ public class SFXManager : MonoBehaviour
         {
             StartCoroutine(PlayClipDebounced(smallCreatureScreams[new System.Random().Next(smallCreatureScreams.Length)]));
         }
+    }
+
+    public void PlayHorn(){
+        audioSource.PlayOneShot(WaveStartHorn);
     }
 
 
