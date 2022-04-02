@@ -25,6 +25,7 @@ public class Arrow : MonoBehaviour, Projectile
             latestTargetPos = target.transform.position;
 
             if (Vector2.Distance(transform.position, target.transform.position) < 0.05f) {
+                SFXManager.Instance.TriggerSingleImpactSound();
                 target.TakeDamage(damage);
                 Destroy(gameObject);
             }

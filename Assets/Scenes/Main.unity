@@ -1116,6 +1116,10 @@ PrefabInstance:
       propertyPath: impactAudioSource
       value: 
       objectReference: {fileID: 1100863003}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: singleImpacts.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4cb8efde922154149b3572476314d99c, type: 3}
     - target: {fileID: 3014232011521986940, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
       propertyPath: m_RootOrder
       value: 1

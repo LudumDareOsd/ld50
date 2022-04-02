@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
         Health -= damage;
         if (Health <= 0.0f)
         {
+            SFXManager.Instance.TriggerHellHogSound();
             // Die
             Destroy(gameObject);
         }
