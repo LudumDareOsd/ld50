@@ -23,16 +23,18 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
-        SFXManager.Instance.PlayHorn();
+        // SFXManager.Instance.PlayHorn();
 
         while(true)
         {
-            var spawn = Instantiate(enemyPrefabs[0], transform);
+            var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+
+            var spawn = Instantiate(prefab, transform);
             // var follow = spawn.GetComponent<FollowPath>();
             // var enemy = spawn.GetComponent<Enemy>();
             // spawn.transform.SetParent(transform);
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(5);
         }
     }
 

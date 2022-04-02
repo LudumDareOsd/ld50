@@ -7,7 +7,7 @@ public class LoopSprite : MonoBehaviour
 {
 	public List<Sprite> sprites;
 
-	[Range(0.0f, 3.0f)]
+	[Range(0.01f, 3.0f)]
 	public float switchTime = 1f;
 
 	private int currentSprite = 0;
@@ -17,17 +17,24 @@ public class LoopSprite : MonoBehaviour
 	void Awake()
     {
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		StartCoroutine(SwitchSprite(switchTime));
         rb = GetComponent<Rigidbody2D>();
+		StartCoroutine(SwitchSprite(switchTime));
 	}
 
 	public IEnumerator SwitchSprite(float duration)
 	{
-        // float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-        // transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        var dir = gameObject.GetComponent<FollowPath>().GetDirection();
+        bool flip = false;
+        if (dir > 4)
+        {
+            dir = 4;
+            flip = true;
+        }
 
-		currentSprite = (currentSprite >= sprites.Count - 1) ? 0 : currentSprite + 1;
-		spriteRenderer.sprite = sprites[currentSprite];
+        currentSprite = (currentSprite >= 1) ? 0 : currentSprite + 1;
+        // Debug.Log(dir + currentSprite);
+		spriteRenderer.sprite = sprites[dir + currentSprite];
+        spriteRenderer.flipX = flip;
 
 		yield return new WaitForSeconds(duration);
 

@@ -1104,6 +1104,18 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1100863002}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: defaultSource
+      value: 
+      objectReference: {fileID: 1100863002}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: beingAudioSource
+      value: 
+      objectReference: {fileID: 1100863004}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: impactAudioSource
+      value: 
+      objectReference: {fileID: 1100863003}
     - target: {fileID: 3014232011521986940, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1148,6 +1160,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3181384079392679644, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4552242417851927440, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
       propertyPath: m_Name
       value: SFXManager
@@ -1157,6 +1173,16 @@ PrefabInstance:
 --- !u!82 &1100863002 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8587499576761890942, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+  m_PrefabInstance: {fileID: 1100863001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1100863003 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3181384079392679644, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+  m_PrefabInstance: {fileID: 1100863001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1100863004 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8079270789608905414, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
   m_PrefabInstance: {fileID: 1100863001}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1231062662
@@ -1785,6 +1811,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 1194878360926915501, guid: c553dd4e1064f0248ae0266170656f43, type: 3}
+  - {fileID: 1194878360926915501, guid: c1c1f77c62a6cc860be1ab08b49eed3a, type: 3}
+  - {fileID: 1194878360926915501, guid: c0a2be6164e09a2a18cc08abf806b257, type: 3}
   enemies: []
 --- !u!1001 &2022538238
 PrefabInstance:
