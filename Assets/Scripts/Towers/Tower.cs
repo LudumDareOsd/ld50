@@ -107,6 +107,8 @@ public class Tower : MonoBehaviour {
 
             var pos = RectTransformUtility.WorldToScreenPoint(Camera.main, textpos);
             uppgradePrice.transform.position = pos;
+        } else {
+            uppgradePrice.SetActive(false);
         }
     }
 }
