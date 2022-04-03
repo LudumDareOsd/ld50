@@ -50,7 +50,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
                 foreach (var collider in colliders) {
                     var enemy = collider.GetComponent<Enemy>();
                     enemy.TakeDamage(damage);
-                    // enemy.Slow();
+                    enemy.TriggerSlowdown();
                 }
 
                 Destroy(gameObject);
