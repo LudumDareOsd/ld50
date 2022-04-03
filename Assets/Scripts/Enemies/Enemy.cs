@@ -7,7 +7,6 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     public float health = 10f;
-    public string deathSound, spawnSound;
 
     public void TakeDamage(float damage)
     {
@@ -15,7 +14,6 @@ public class Enemy : MonoBehaviour
         if (health <= 0.0f)
         {
             SFXManager.Instance.TriggerHellHogSound();
-            // Die
             Destroy(gameObject);
         }
     }
@@ -23,6 +21,11 @@ public class Enemy : MonoBehaviour
     public float GetAccumulatedDistance()
     {
         return GetComponent<FollowPath>().accumulatedDistance;
+    }
+
+    public void TriggerSlowdown()
+    {
+        GetComponent<FollowPath>().TriggerSlowdown();
     }
 
 }
