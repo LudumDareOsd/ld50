@@ -39,6 +39,7 @@ public class BaseEnemy : MonoBehaviour
     {
         GameManager.instance.AddBanished();
         GameManager.instance.AddMoney(money);
+        EnemyManager.instance.EnemyDied();
         Instantiate(BloodSplosion, transform.position, transform.rotation);
     }
     

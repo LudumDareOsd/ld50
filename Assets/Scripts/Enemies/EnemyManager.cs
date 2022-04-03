@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
 
     public static EnemyManager instance;
 
+    private int aliveEnemies = 0;
+
     private void Awake()
     {
         if (EnemyManager.instance != null) {
@@ -16,36 +18,137 @@ public class EnemyManager : MonoBehaviour
             EnemyManager.instance = this;
         }
 
-        StartCoroutine(StartWave(1));
+        StartWave(1);
     }
 
-    public IEnumerator StartWave(int wave)
+    public void StartWave(int wave)
     {
         Debug.Log($"starting wave {wave}");        
         SFXManager.Instance.PlayHorn();
         GameManager.instance.SetWave(wave);
 
         StartCoroutine(SpawnEnemies(wave));
-
-        yield return new WaitForSeconds(30);
-
-        StartCoroutine(StartWave(++wave));
     }
 
 
     public IEnumerator SpawnEnemies(int wave)
     {
-        while (true)
+        var waves = 3;
+        while (waves-- > 0)
         {
-            var prefab = enemyPrefabs[Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave))];
-            var spawn = Instantiate(prefab, transform);
-            // var follow = spawn.GetComponent<FollowPath>();
-            // var enemy = spawn.GetComponent<Enemy>();
-            // spawn.transform.SetParent(transform);
+            // Always spawn an increasing amount of small demons
+            for (int i = 0; i < wave; i++)
+            {
+                SpawnEnemy(0);
+            }
 
-            yield return new WaitForSeconds(3 + wave);
+            // Unique mobs per wave
+            switch (wave)
+            {
+                case 1:
+                {
+                    SpawnEnemy(0);
+                break;
+                }
+                case 2:
+                {
+                    yield return new WaitForSeconds(1);
+                    SpawnEnemy(1);
+                break;
+                }
+                case 3:
+                {
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(1);
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(2);
+                break;
+                }
+                case 4:
+                {
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(2);
+                    SpawnEnemy(2);
+                break;
+                }
+                case 5:
+                {
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(2);
+                    SpawnEnemy(2);
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(3);
+                break;
+                }
+                case 6:
+                {
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    SpawnEnemy(1);
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(3);
+                break;
+                }
+                default:
+                {
+                    for (int i = 0; i < wave; i++)
+                    {
+                        SpawnEnemy(0);
+                        SpawnEnemy(3);
+                        SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
+                        yield return new WaitForSeconds(.5f);
+                    }
+                   break;
+                }
+                    
+            }
+            yield return new WaitForSeconds(6f);
+        }
+
+        while (aliveEnemies > 0)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+        
+        yield return new WaitForSeconds(1f);
+
+        StartWave(++wave);
+    }
+
+    public void SpawnEnemy(int type)
+    {
+        aliveEnemies++;
+        //Random.Range(0f, 260f);
+        var spawnPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), 0f);
+        if(type >= 0 && type <= enemyPrefabs.Length)
+        {
+            var prefab = enemyPrefabs[type];
+            var spawn = Instantiate(prefab, spawnPos, transform.rotation);
+            spawn.GetComponent<BaseEnemy>().TriggerSlowdown();
+        }
+        else
+        {
+            //var prefab = enemyPrefabs[Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave))];
+            var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            var spawn = Instantiate(prefab, spawnPos, transform.rotation);
         }
     }
 
+    public void EnemyDied()
+    {
+        aliveEnemies--;
+    }
 
+    public int EnemiesAlive()
+    {
+        return Mathf.Max(aliveEnemies, 0);
+    }
 }
