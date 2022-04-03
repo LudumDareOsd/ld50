@@ -143,7 +143,7 @@ public class SFXManager : MonoBehaviour
 
     public void TriggerAoeSound(float volume = 1f)
     {
-        if (!isUsingSingleImpactSource && aoeImpacts.Length > 0)
+        if (!isUsingImpactAoeSource && aoeImpacts.Length > 0)
         {
             StartCoroutine(PlayAoeImpactClipDebounced(volume));
 
