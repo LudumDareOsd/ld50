@@ -1372,7 +1372,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.03
+  m_Radius: 0.02
 --- !u!1001 &1377955568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2157,6 +2157,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4471075637805077283, guid: 8c20c6c7d44143047a71c87136ed5801, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471075637805077283, guid: 8c20c6c7d44143047a71c87136ed5801, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7374545881808743507, guid: 8c20c6c7d44143047a71c87136ed5801, type: 3}
       propertyPath: m_Name
       value: GUI

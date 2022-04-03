@@ -187,6 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3156097460778753263, guid: 24f4bd146a7e75f4b8a21708077f18a6, type: 3}
   reloadSpeed: 0.3
+  uppgradePrice1: 200
+  uppgradePrice2: 500
+  level2Damage: 7
+  level3Damage: 10
 --- !u!1 &6564982059241513002
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +201,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4252432911401734683}
   - component: {fileID: 6654175813034503284}
-  m_Layer: 0
+  - component: {fileID: 3051412158079375643}
+  m_Layer: 10
   m_Name: UpgradeCross
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6564982059241513002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.3, z: 0}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6911720934505280133}
@@ -257,7 +262,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 8f985f53aceef1f4bb7e9116c8b30e79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -269,3 +274,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3051412158079375643
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6564982059241513002}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.16666667, y: 0.16666667}
+    newSize: {x: 0.25, y: 0.25}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.16666667, y: 0.16666667}
+  m_EdgeRadius: 0

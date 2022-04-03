@@ -5,4 +5,6 @@ using UnityEngine;
 public interface Projectile
 {
     void SetTarget(BaseEnemy enemy);
+
+    void SetDamage(float damage);
 }
