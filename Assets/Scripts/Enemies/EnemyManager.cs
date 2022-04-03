@@ -8,6 +8,8 @@ public class EnemyManager : MonoBehaviour
 
     public static EnemyManager instance;
 
+    private int aliveEnemies = 0;
+
     private void Awake()
     {
         if (EnemyManager.instance != null) {
@@ -16,20 +18,16 @@ public class EnemyManager : MonoBehaviour
             EnemyManager.instance = this;
         }
 
-        StartCoroutine(StartWave(1));
+        StartWave(1);
     }
 
-    public IEnumerator StartWave(int wave)
+    public void StartWave(int wave)
     {
         Debug.Log($"starting wave {wave}");        
         SFXManager.Instance.PlayHorn();
         GameManager.instance.SetWave(wave);
 
         StartCoroutine(SpawnEnemies(wave));
-
-        yield return new WaitForSeconds(30);
-
-        StartCoroutine(StartWave(++wave));
     }
 
 
@@ -49,8 +47,7 @@ public class EnemyManager : MonoBehaviour
             {
                 case 1:
                 {
-                    //var prefab = enemyPrefabs[0];
-                    //var spawn = Instantiate(prefab, transform);
+                    SpawnEnemy(0);
                 break;
                 }
                 case 2:
@@ -100,26 +97,42 @@ public class EnemyManager : MonoBehaviour
                     SpawnEnemy(3);
                 break;
                 }
+                default:
+                {
+                    for (int i = 0; i < wave; i++)
+                    {
+                        SpawnEnemy(0);
+                        SpawnEnemy(1);
+                        SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
+                        yield return new WaitForSeconds(.5f);
+                    }
+                   break;
+                }
                     
             }
-
-            // var follow = spawn.GetComponent<FollowPath>();
-            // var enemy = spawn.GetComponent<Enemy>();
-            // spawn.transform.SetParent(transform);
-
             yield return new WaitForSeconds(6f);
         }
-    }
 
+        while (aliveEnemies > 0)
+        {
+            yield return new WaitForSeconds(.1f);
+        }
+        
+        yield return new WaitForSeconds(1f);
+
+        StartWave(++wave);
+    }
 
     public void SpawnEnemy(int type)
     {
+        aliveEnemies++;
         //Random.Range(0f, 260f);
         var spawnPos = transform.position + new Vector3(Random.Range(-0.3f, 0.3f), Random.Range(-0.3f, 0.3f), 0f);
         if(type >= 0 && type <= enemyPrefabs.Length)
         {
             var prefab = enemyPrefabs[type];
             var spawn = Instantiate(prefab, spawnPos, transform.rotation);
+            spawn.GetComponent<BaseEnemy>().TriggerSlowdown();
         }
         else
         {
@@ -127,5 +140,15 @@ public class EnemyManager : MonoBehaviour
             var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             var spawn = Instantiate(prefab, spawnPos, transform.rotation);
         }
+    }
+
+    public void EnemyDied()
+    {
+        aliveEnemies--;
+    }
+
+    public int EnemiesAlive()
+    {
+        return aliveEnemies;
     }
 }

@@ -39,6 +39,9 @@ public class BaseEnemy : MonoBehaviour
     {
         GameManager.instance.AddBanished();
         GameManager.instance.AddMoney(money);
+        EnemyManager.instance.EnemyDied();
+
+        Debug.Log($"enemies alive {EnemyManager.instance.EnemiesAlive()}");
         Instantiate(BloodSplosion, transform.position, transform.rotation);
     }
     

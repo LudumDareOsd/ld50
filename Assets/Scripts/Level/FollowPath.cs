@@ -13,7 +13,7 @@ public class FollowPath : MonoBehaviour
     private Transform currentTarget;
     private Rigidbody2D rb;
     private float moveAngle = 0f;
-    private bool slowdown = false;
+    public bool slowdown = false;
 
     void Awake()
     {
@@ -31,7 +31,12 @@ public class FollowPath : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-	void FixedUpdate ()
+    void Update()
+    {
+        GetComponent<SpriteRenderer>().color = slowdown ? new Color(.1f,.7f,.2f) : Color.white;
+    }
+
+    void FixedUpdate ()
 	{
         Move();
 	}
