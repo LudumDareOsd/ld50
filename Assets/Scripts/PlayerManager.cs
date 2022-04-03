@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour {
                     if (GameManager.instance.GetMoney() >= tower.price) {
                         Instantiate(Resources.Load(tower.name) as GameObject, selectedTower.transform.position, selectedTower.transform.rotation);
                         GameManager.instance.AddMoney(-tower.price);
-
+                        tower.price = GameObject.Find(tower.uiName).GetComponent<TowerUI>().TowerBought();
                         if (GameManager.instance.GetMoney() < tower.price) {
                             tower = null;
                             selectedTower.GetComponent<SpriteRenderer>().sprite = null;
