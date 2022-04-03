@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Door : MonoBehaviour {
+    public Sprite doorDamage;
+    private Sprite door;
     private ContactFilter2D contactFilter;
     private BoxCollider2D targetCollider;
     private SpriteRenderer sr;
@@ -18,7 +20,7 @@ public class Door : MonoBehaviour {
         targetCollider = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
 
-
+        door = sr.sprite;
     }
 
     private void Update() {
@@ -37,11 +39,19 @@ public class Door : MonoBehaviour {
 
     IEnumerator Damage() {
 
-        sr.color = Color.red;
+        sr.sprite = doorDamage;
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
 
-        sr.color = Color.white;
+        sr.sprite = door;
+
+        yield return new WaitForSeconds(0.05f);
+
+        sr.sprite = doorDamage;
+
+        yield return new WaitForSeconds(0.05f);
+
+        sr.sprite = door;
     }
 
 }

@@ -1979,6 +1979,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056991843323904992, guid: a59dc07a2a16a7d44a5a84225949d279, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056991843323904992, guid: a59dc07a2a16a7d44a5a84225949d279, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056991843323904992, guid: a59dc07a2a16a7d44a5a84225949d279, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056991843323904992, guid: a59dc07a2a16a7d44a5a84225949d279, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1056991843323904993, guid: a59dc07a2a16a7d44a5a84225949d279, type: 3}
       propertyPath: m_Name
       value: Door

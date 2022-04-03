@@ -23,7 +23,6 @@ public class UIManager : MonoBehaviour
 			wave = GameObject.Find("Wave").GetComponent<TextMeshProUGUI>();
 			healthBar = GameObject.Find("Healthbar").GetComponent<Image>();
 
-
 			banished.text = "0";
 			money.text = "0";
 			wave.text = "1";

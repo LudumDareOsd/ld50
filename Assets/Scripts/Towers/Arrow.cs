@@ -4,6 +4,7 @@ public class Arrow : MonoBehaviour, Projectile
 {
     public float damage = 5f;
     public float speed = 0.1f;
+    public GameObject animation;
 
     private BaseEnemy target;
     private Vector3 latestTargetPos;
@@ -30,6 +31,7 @@ public class Arrow : MonoBehaviour, Projectile
             if (Vector2.Distance(transform.position, target.transform.position) < 0.1f) {
                 SFXManager.Instance.TriggerSingleImpactSound();
                 target.TakeDamage(damage);
+                Instantiate(animation, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }

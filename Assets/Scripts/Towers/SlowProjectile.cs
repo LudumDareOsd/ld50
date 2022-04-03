@@ -7,6 +7,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
     public float slow = 1f;
     public float speed = 0.1f;
     public float aoeRadius = 0.5f;
+    public GameObject animation;
 
     private BaseEnemy target;
     private Vector3 latestTargetPos;
@@ -32,6 +33,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
             RotateTowards(latestTargetPos);
 
             if (Vector2.Distance(transform.position, latestTargetPos) < 0.1f) {
+                Instantiate(animation, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         } else {
@@ -53,6 +55,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
                     enemy.TriggerSlowdown();
                 }
 
+                Instantiate(animation, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }

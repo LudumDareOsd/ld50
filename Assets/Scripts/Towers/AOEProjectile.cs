@@ -7,6 +7,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
     public float damage = 5f;
     public float speed = 0.1f;
     public float aoeRadius = 0.5f;
+    public GameObject animation;
 
     private BaseEnemy target;
     private Vector3 latestTargetPos;
@@ -30,6 +31,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
             transform.position = Vector2.MoveTowards(transform.position, latestTargetPos, step);
 
             if (Vector2.Distance(transform.position, latestTargetPos) < 0.05f) {
+                Instantiate(animation, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         } else {
@@ -48,6 +50,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
                     collider.GetComponent<BaseEnemy>().TakeDamage(damage);
                 }
 
+                Instantiate(animation, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
         }

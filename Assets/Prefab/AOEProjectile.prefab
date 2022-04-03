@@ -130,6 +130,7 @@ MonoBehaviour:
   damage: 5
   speed: 1
   aoeRadius: 1
+  animation: {fileID: 6328012353241096201, guid: 55eabc79d13d41e47a1733ca41bc3fe9, type: 3}
 --- !u!58 &6363351209567373537
 CircleCollider2D:
   m_ObjectHideFlags: 0
