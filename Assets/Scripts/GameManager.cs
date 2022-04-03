@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
     public void SetWave(int wave)
     {
         this.wave = wave;
-        UIManager.instance.SetWave(1.ToString());
+        UIManager.instance.SetWave(wave.ToString());
     }
 
     public void Restart()
