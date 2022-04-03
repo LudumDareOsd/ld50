@@ -24,6 +24,11 @@ public class BaseEnemy : MonoBehaviour
         //hb.high = Color.green;
     }
 
+    public virtual void Spawn(int wave)
+    {
+        this.health += (this.health / 2 * wave);
+    }    
+
     public virtual void TakeDamage(float damage)
     {
         health -= damage;

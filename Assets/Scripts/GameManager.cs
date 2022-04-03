@@ -69,6 +69,11 @@ public class GameManager : MonoBehaviour {
         UIManager.instance.SetWave(wave.ToString());
     }
 
+    public int Wave()
+    {
+        return wave;
+    }
+
     public void Restart() {
         score.wave = 0;
         score.banished = 0;
