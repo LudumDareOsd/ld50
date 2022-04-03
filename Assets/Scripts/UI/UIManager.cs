@@ -43,7 +43,8 @@ public class UIManager : MonoBehaviour
 
 	public void SetHealth(int hp) {
 		float fraction = hp / 100f;
-		this.healthBar.rectTransform.sizeDelta = new Vector2(185.7f * fraction, this.healthBar.rectTransform.sizeDelta.y);
+        this.healthBar.rectTransform.sizeDelta = new Vector2(185.7f * fraction, this.healthBar.rectTransform.sizeDelta.y);
+		this.healthBar.rectTransform.localPosition = new Vector3(-101.7f + (185.7f * (1f - fraction)), this.healthBar.rectTransform.localPosition.y, this.healthBar.rectTransform.localPosition.z);
 	}
 
 
