@@ -7,8 +7,11 @@ public class Tower : MonoBehaviour {
     public float reloadSpeed = 0.3f;
     private float reload = 0f;
     private TargetSeeker targetSeeker;
+    private SpriteRenderer uppgradeSr;
     private void Awake() {
         targetSeeker = GetComponentInChildren<TargetSeeker>();
+        uppgradeSr = transform.Find("UpgradeCross").GetComponent<SpriteRenderer>();
+        uppgradeSr.enabled = false;
     }
 
     public void Update() {
@@ -23,6 +26,10 @@ public class Tower : MonoBehaviour {
                 Fire();
             }
         }
+
+        if (Input.GetMouseButtonDown(1)) {
+            HideUppgrade();
+        }
     }
 
     private void Fire() {
@@ -34,4 +41,11 @@ public class Tower : MonoBehaviour {
         proj.GetComponent<Projectile>().SetTarget(targetSeeker.GetTarget());
     }
 
+    public void HideUppgrade() {
+        uppgradeSr.enabled = false;
+    }
+
+    private void OnMouseOver() {
+        uppgradeSr.enabled = true;
+    }
 }
