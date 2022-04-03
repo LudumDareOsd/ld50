@@ -123,6 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 0.4
   accumulatedDistance: 0
+  slowdown: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BloodSplosion: {fileID: 3299451865252825124, guid: 979991ef429f55ab5b596e58b2091f7f, type: 3}
   health: 20
-  money: 20
+  money: 25
   gateDamage: 5
 --- !u!114 &1093623856172887823
 MonoBehaviour:
