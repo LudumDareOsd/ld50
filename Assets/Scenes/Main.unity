@@ -1117,6 +1117,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1100863003}
     - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: aoeImpactAudioSource
+      value: 
+      objectReference: {fileID: 1100863006}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: slowImpactAudioSource
+      value: 
+      objectReference: {fileID: 1100863005}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+      propertyPath: singleImpactAudioSource
+      value: 
+      objectReference: {fileID: 1100863003}
+    - target: {fileID: -809059159645061669, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
       propertyPath: singleImpacts.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 4cb8efde922154149b3572476314d99c, type: 3}
@@ -1187,6 +1199,16 @@ AudioSource:
 --- !u!82 &1100863004 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 8079270789608905414, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+  m_PrefabInstance: {fileID: 1100863001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1100863005 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 170001615682446306, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
+  m_PrefabInstance: {fileID: 1100863001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1100863006 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -4628983279421327647, guid: 893718a70e40c2941a0b5f396dde6b10, type: 3}
   m_PrefabInstance: {fileID: 1100863001}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1231062662

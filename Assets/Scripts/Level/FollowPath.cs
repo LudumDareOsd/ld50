@@ -51,7 +51,6 @@ public class FollowPath : MonoBehaviour
         {
             if(currentTarget.gameObject.GetComponent<Waypoint>().endPoint) {
                 // The End Is Nigh
-                // TODO:Church TAKE DAMAGE
                 Destroy(gameObject);
             }
 

@@ -32,8 +32,8 @@ public class LoopSprite : MonoBehaviour
             flip = true;
         }
 
-        spriteRenderer.sprite = sprites[dir + currentSprite];
-        spriteRenderer.flipX = flip;
+        spriteRenderer.sprite = sprites[Mathf.Min(dir + currentSprite, sprites.Count - 1)];
+        //spriteRenderer.flipX = flip;
     }
 
 	public IEnumerator SwitchSprite(float duration)

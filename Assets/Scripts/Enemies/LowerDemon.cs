@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LowerDemon : BaseEnemy
 {
-    public override void TakeDamage(float damage)
+    public override void OnDeath()
     {
         SFXManager.Instance.TriggerLesserDemonSound();
-        base.TakeDamage(damage);
+        base.OnDeath();
     }
 }

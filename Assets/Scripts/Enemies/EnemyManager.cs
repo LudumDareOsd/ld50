@@ -16,15 +16,24 @@ public class EnemyManager : MonoBehaviour
 			EnemyManager.instance = this;
 		}
 
-        StartCoroutine(SpawnEnemies());
+        StartCoroutine(StartWave(1));
 	}
 
-
-    public IEnumerator SpawnEnemies()
+    public IEnumerator StartWave(int wave)
     {
         SFXManager.Instance.PlayHorn();
-        GameManager.instance.SetWave(1);
+        GameManager.instance.SetWave(wave);
 
+        StartCoroutine(SpawnEnemies(wave));
+
+        yield return new WaitForSeconds(30);
+
+        StartCoroutine(StartWave(++wave));
+    }
+
+
+    public IEnumerator SpawnEnemies(int wave)
+    {
         while (true)
         {
             var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
