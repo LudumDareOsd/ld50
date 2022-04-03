@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class HellHog : BaseEnemy
 {
-    public override void TakeDamage(float damage)
+    public override void OnDeath()
     {
         SFXManager.Instance.TriggerHellHogSound();
-        base.TakeDamage(damage);
+        base.OnDeath();
     }
 }

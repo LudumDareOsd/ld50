@@ -11,11 +11,19 @@ public class SFXManager : MonoBehaviour
 
     public AudioSource beingAudioSource;
 
-    public AudioSource impactAudioSource;
+    public AudioSource singleImpactAudioSource;
+
+    public AudioSource aoeImpactAudioSource;
+
+    public AudioSource slowImpactAudioSource;
 
     private bool isUsingBeingSource;
 
-    private bool isUsingImpactSource;
+    private bool isUsingSingleImpactSource;
+
+    private bool isUsingImpactAoeSource;
+
+    private bool isUsingSlowImpactSource;
 
     public AudioClip[] singleImpacts;
 
@@ -50,7 +58,7 @@ public class SFXManager : MonoBehaviour
     private IEnumerator PlayBeingClipDebounced(AudioClip clip, float volume, float debounceTime = 0.3f)
     {
 
-        impactAudioSource.PlayOneShot(clip, volume);
+        beingAudioSource.PlayOneShot(clip, volume);
 
         isUsingBeingSource = true;
 
@@ -60,16 +68,42 @@ public class SFXManager : MonoBehaviour
 
     }
 
-    private IEnumerator PlayImpactClipDebounced(AudioClip clip, float volume, float debounceTime = 0.3f)
+    private IEnumerator PlaySingleImpactClipDebounced(float volume, float debounceTime = 0.3f)
     {
 
-        impactAudioSource.PlayOneShot(clip, volume);
+        singleImpactAudioSource.PlayOneShot(singleImpacts[new System.Random().Next(singleImpacts.Length)], volume);
 
-        isUsingImpactSource = true;
+        isUsingSingleImpactSource = true;
 
         yield return new WaitForSeconds(debounceTime);
 
-        isUsingImpactSource = false;
+        isUsingSingleImpactSource = false;
+
+    }
+
+    private IEnumerator PlayAoeImpactClipDebounced(float volume, float debounceTime = 0.3f)
+    {
+
+        aoeImpactAudioSource.PlayOneShot(aoeImpacts[new System.Random().Next(aoeImpacts.Length)], volume);
+
+        isUsingImpactAoeSource = true;
+
+        yield return new WaitForSeconds(debounceTime);
+
+        isUsingImpactAoeSource = false;
+
+    }
+
+    private IEnumerator PlaySlowImpactClipDebounced(float volume, float debounceTime = 0.3f)
+    {
+
+        slowImpactAudioSource.PlayOneShot(slowImpacts[new System.Random().Next(slowImpacts.Length)], volume);
+
+        isUsingSlowImpactSource = true;
+
+        yield return new WaitForSeconds(debounceTime);
+
+        isUsingSlowImpactSource = false;
 
     }
 
@@ -81,13 +115,6 @@ public class SFXManager : MonoBehaviour
         }
     }
 
-    public void TriggerImpactSound(AudioClip[] impactSounds, float volume)
-    {
-        if (!isUsingImpactSource && impactSounds.Length > 0)
-        {
-            StartCoroutine(PlayImpactClipDebounced(impactSounds[new System.Random().Next(impactSounds.Length)], volume));
-        }
-    }
 
     public void TriggerHellHogSound(float volume = 1f) => TriggerBeingSound(hellHogSounds, volume);
 
@@ -98,11 +125,30 @@ public class SFXManager : MonoBehaviour
 
     public void TriggerHellPriestSound(float volume = 1f) => TriggerBeingSound(hellPriestSounds, volume);
 
-    public void TriggerSingleImpactSound(float volume = 1f) => TriggerImpactSound(singleImpacts, volume);
+    public void TriggerSingleImpactSound(float volume = 1f)
+    {
+        if (!isUsingSingleImpactSource && singleImpacts.Length > 0)
+        {
+            StartCoroutine(PlaySingleImpactClipDebounced(volume));
+        }
+    }
 
-    public void TriggerSlowSound(float volume = 1f) => TriggerImpactSound(slowImpacts, volume);
+    public void TriggerSlowSound(float volume = 1f)
+    {
+        if (!isUsingSlowImpactSource && slowImpacts.Length > 0)
+        {
+            StartCoroutine(PlaySlowImpactClipDebounced(volume));
+        }
+    }
 
-    public void TriggerAoeSound(float volume = 1f) => TriggerImpactSound(aoeImpacts, volume);
+    public void TriggerAoeSound(float volume = 1f)
+    {
+        if (!isUsingSingleImpactSource && aoeImpacts.Length > 0)
+        {
+            StartCoroutine(PlayAoeImpactClipDebounced(volume));
+
+        }
+    }
 
 
     public void PlayHorn(float volume = 1f) => defaultSource.PlayOneShot(WaveStartHorn, volume);
