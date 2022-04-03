@@ -55,6 +55,11 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    private static float NextFloat(float min, float max)
+    {
+        return (float)(new System.Random().NextDouble() * (max - min) + min);
+    }
+
     private IEnumerator PlayBeingClipDebounced(AudioClip clip, float volume, float debounceTime = 0.3f)
     {
 
@@ -70,7 +75,7 @@ public class SFXManager : MonoBehaviour
 
     private IEnumerator PlaySingleImpactClipDebounced(float volume, float debounceTime = 0.3f)
     {
-
+        singleImpactAudioSource.pitch = NextFloat(0.5f, 1.5f);
         singleImpactAudioSource.PlayOneShot(singleImpacts[new System.Random().Next(singleImpacts.Length)], volume);
 
         isUsingSingleImpactSource = true;
@@ -83,7 +88,7 @@ public class SFXManager : MonoBehaviour
 
     private IEnumerator PlayAoeImpactClipDebounced(float volume, float debounceTime = 0.3f)
     {
-
+        aoeImpactAudioSource.pitch = NextFloat(0.5f, 1.5f);
         aoeImpactAudioSource.PlayOneShot(aoeImpacts[new System.Random().Next(aoeImpacts.Length)], volume);
 
         isUsingImpactAoeSource = true;
@@ -96,7 +101,7 @@ public class SFXManager : MonoBehaviour
 
     private IEnumerator PlaySlowImpactClipDebounced(float volume, float debounceTime = 0.3f)
     {
-
+        slowImpactAudioSource.pitch = NextFloat(0.5f, 1.5f);
         slowImpactAudioSource.PlayOneShot(slowImpacts[new System.Random().Next(slowImpacts.Length)], volume);
 
         isUsingSlowImpactSource = true;

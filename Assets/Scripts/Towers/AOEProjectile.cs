@@ -39,7 +39,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
             latestTargetPos = target.transform.position;
 
             if (Vector2.Distance(transform.position, target.transform.position) < 0.1f) {
-                SFXManager.Instance.TriggerAoeSound();
+                SFXManager.Instance.TriggerAoeSound(0.7f);
 
                 var colliders = new List<Collider2D>();
                 targetCollider.OverlapCollider(contactFilter, colliders);
