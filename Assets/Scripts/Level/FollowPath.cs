@@ -13,6 +13,7 @@ public class FollowPath : MonoBehaviour
     private Transform currentTarget;
     private Rigidbody2D rb;
     private float moveAngle = 0f;
+    private bool slowdown = false;
 
     void Awake()
     {
@@ -39,7 +40,7 @@ public class FollowPath : MonoBehaviour
     {
 		if(currentTarget == null) return;
 
-        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.fixedDeltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, (slowdown ? moveSpeed * .5f : moveSpeed) * Time.fixedDeltaTime);
 
         accumulatedDistance += Vector2.Distance(lastPosition, transform.position);
         moveAngle = GetAngle(lastPosition, transform.position);
@@ -57,6 +58,12 @@ public class FollowPath : MonoBehaviour
             currentTarget = currentTarget.gameObject.GetComponent<Waypoint>().GetNextWaypoint();
             // Debug.Log($"Getting next waypoint GetDirection() {GetDirection()}");
         }
+    }
+
+    public void TriggerSlowdown()
+    {
+        slowdown = true;
+        StartCoroutine(RemoveSlowness(3f));
     }
 
     public int GetDirection()
@@ -91,5 +98,11 @@ public class FollowPath : MonoBehaviour
         var angleDegrees = angleRadians * Mathf.Rad2Deg;
         if (angleDegrees < 0) angleDegrees += 360;
         return angleDegrees;
+    }
+
+    private IEnumerator RemoveSlowness(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        slowdown = false;
     }
 }
