@@ -59,4 +59,8 @@ public class AOEProjectile : MonoBehaviour, Projectile {
     public void SetTarget(BaseEnemy enemy) {
         target = enemy;
     }
+
+    public void SetDamage(float damage) {
+        this.damage = damage;
+    }
 }
