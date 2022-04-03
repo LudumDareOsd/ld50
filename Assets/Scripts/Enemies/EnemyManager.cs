@@ -43,7 +43,7 @@ public class EnemyManager : MonoBehaviour
             // var enemy = spawn.GetComponent<Enemy>();
             // spawn.transform.SetParent(transform);
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2 + wave);
         }
     }
 
