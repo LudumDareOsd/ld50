@@ -342,13 +342,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 45856706ffdc62d41a65e5ec6ba87fec, type: 3}
   - {fileID: 8300000, guid: b38e82b06cfd3934a93bc2829e3ead02, type: 3}
   slowImpacts:
-  - {fileID: 8300000, guid: 5a233643956b04d45b0425f2f17df55f, type: 3}
-  - {fileID: 8300000, guid: 2293261cc7f1ed44ca9a3a4ac8c727dc, type: 3}
-  - {fileID: 8300000, guid: 83d548c1ffb7a1c41b07a9e1c82936fa, type: 3}
+  - {fileID: 8300000, guid: 0584912f2727fe241a3f41474655f608, type: 3}
+  - {fileID: 8300000, guid: 89f8ba36edb666a4c8b189af6564d2b8, type: 3}
+  - {fileID: 8300000, guid: 642857f74af99114d9a5db60027c4c1c, type: 3}
   aoeImpacts:
-  - {fileID: 8300000, guid: 91164d8ae61b471429b4cdd28bcc2a9e, type: 3}
-  - {fileID: 8300000, guid: 4bfb124b1f251d344895c961caa52887, type: 3}
-  - {fileID: 8300000, guid: 5f6046b0b76b07c42905789dcab1fd78, type: 3}
+  - {fileID: 8300000, guid: 94331680cb204d3428e43cb93261ae93, type: 3}
+  - {fileID: 8300000, guid: 86c8c027768f897499803c319bc0adbc, type: 3}
+  - {fileID: 8300000, guid: a580e5a67ee2f7a49b3f0fc45afab665, type: 3}
   hellHogSounds:
   - {fileID: 8300000, guid: eac33767fd0b20240afb5eaac41f885c, type: 3}
   - {fileID: 8300000, guid: eac33767fd0b20240afb5eaac41f885c, type: 3}
