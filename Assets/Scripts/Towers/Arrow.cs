@@ -11,8 +11,6 @@ public class Arrow : MonoBehaviour, Projectile
     public void Update() {
         var step = speed * Time.deltaTime;
 
-
-
         if (target == null) {
             transform.position = Vector2.MoveTowards(transform.position, latestTargetPos, step);
 
@@ -30,8 +28,6 @@ public class Arrow : MonoBehaviour, Projectile
                 Destroy(gameObject);
             }
         }
-
-        
     }
 
     public void SetTarget(Enemy enemy) {
