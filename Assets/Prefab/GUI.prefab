@@ -1724,7 +1724,7 @@ GameObject:
   - component: {fileID: 7374545882254189318}
   - component: {fileID: 7374545882254189336}
   - component: {fileID: 7374545882254189319}
-  - component: {fileID: 7374545882254189337}
+  - component: {fileID: 566463107782946348}
   m_Layer: 5
   m_Name: Repair
   m_TagString: Untagged
@@ -1791,7 +1791,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7374545882254189337
+--- !u!114 &566463107782946348
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1800,11 +1800,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7374545882254189317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df88c8aa50be4f8499671a68b2108f0f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7995fb997d288974781eefc53dcf39be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 0}
-  price: 0
+  price: 250
 --- !u!1 &7374545882462844240
 GameObject:
   m_ObjectHideFlags: 0

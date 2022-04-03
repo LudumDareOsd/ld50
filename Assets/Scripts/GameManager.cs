@@ -27,6 +27,22 @@ public class GameManager : MonoBehaviour
 		UIManager.instance.SetHealth(gateHp);
 	}
 
+	public void AddHp(int amount, int price) {
+
+		if (this.gateHp < 100) {
+			this.gateHp += amount;
+
+			if (this.gateHp > 100) {
+				this.gateHp = 100;
+			}
+
+			AddMoney(-price);
+			UIManager.instance.SetHealth(gateHp);
+		}
+		
+		
+	}
+
 	public void TakeGateDamage(int amount) {
 		this.gateHp -= amount;
 		UIManager.instance.SetHealth(gateHp);
