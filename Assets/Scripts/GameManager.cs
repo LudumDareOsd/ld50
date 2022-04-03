@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
 		UIManager.instance.SetMoney(money.ToString());
 	}
 
+	public int GetMoney() {
+		return money;
+	}
+
 	public void AddBanished() {
 		banished += 1;
 		UIManager.instance.SetBanished(banished.ToString());

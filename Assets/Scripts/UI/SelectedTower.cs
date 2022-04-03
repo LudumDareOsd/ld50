@@ -5,4 +5,5 @@ public class SelectedTower
 {
 	public Sprite sprite { get; set; }
 	public string name { get; set; }
+	public int price { get; set; }
 }

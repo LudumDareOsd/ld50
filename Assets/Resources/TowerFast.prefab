@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6394380940497217412}
   - component: {fileID: 2564824611173141596}
   - component: {fileID: 7473888601054120510}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TowerFast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
