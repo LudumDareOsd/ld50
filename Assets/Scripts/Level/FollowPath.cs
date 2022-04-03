@@ -22,7 +22,7 @@ public class FollowPath : MonoBehaviour
         {
             currentTarget = child;
             if(child.GetComponent<Waypoint>().startPoint) {
-                transform.position = currentTarget.position;
+                //transform.position = currentTarget.position + transform.position;
                 lastPosition = transform.position;
                 break;
             }
