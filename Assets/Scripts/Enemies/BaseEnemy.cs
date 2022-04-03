@@ -26,7 +26,7 @@ public class BaseEnemy : MonoBehaviour
 
     public virtual void Spawn(int wave)
     {
-        this.health += (this.health / 2 * wave);
+        this.health += (this.health / 4 * (wave * 0.75f));
     }    
 
     public virtual void TakeDamage(float damage)

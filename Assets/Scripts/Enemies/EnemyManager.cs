@@ -33,6 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies(int wave)
     {
+        yield return new WaitForSeconds(2f);
         var waves = 3;
         while (waves-- > 0)
         {
