@@ -64,9 +64,12 @@ public class PlayerManager : MonoBehaviour {
             var uppcolliders = new List<Collider2D>();
             targetCollider.OverlapCollider(uppgradeContactFilter, uppcolliders);
 
+            var uppgraded = false;
+
             foreach (var uppColl in uppcolliders) {
                 var tower = uppColl.GetComponentInParent<Tower>();
                 tower.Uppgrade();
+                uppgraded = true;
             }
 
             var colliders = new List<Collider2D>();
@@ -74,14 +77,17 @@ public class PlayerManager : MonoBehaviour {
 
             Tower clickedTower = null;
 
-            foreach (var collider in colliders) {
-                var tower = collider.GetComponent<Tower>();
+            if (!uppgraded) {
+                foreach (var collider in colliders) {
+                    var tower = collider.GetComponent<Tower>();
 
-                clickedTower = tower;
-                clickedTower.ShowUppgrade(uppgradePrice);
+                    clickedTower = tower;
+                    clickedTower.ShowUppgrade(uppgradePrice);
 
-                break;
+                    break;
+                }
             }
+
 
             foreach (var t in towers) {
                 if (!t.Equals(clickedTower)) {

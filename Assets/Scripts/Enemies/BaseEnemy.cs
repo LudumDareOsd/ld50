@@ -24,6 +24,11 @@ public class BaseEnemy : MonoBehaviour
         //hb.high = Color.green;
     }
 
+    public virtual void Spawn(int wave)
+    {
+        this.health += (this.health / 4 * (wave * 0.75f));
+    }    
+
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
@@ -40,8 +45,6 @@ public class BaseEnemy : MonoBehaviour
         GameManager.instance.AddBanished();
         GameManager.instance.AddMoney(money);
         EnemyManager.instance.EnemyDied();
-
-        Debug.Log($"enemies alive {EnemyManager.instance.EnemiesAlive()}");
         Instantiate(BloodSplosion, transform.position, transform.rotation);
     }
     

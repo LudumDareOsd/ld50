@@ -20,13 +20,12 @@ public class Healthbar : MonoBehaviour
     public void SetHealth(float h, float max)
     {
         healthbar.SetActive(h < max && h > 0);
-
         healthbar.transform.localScale = new Vector3(h / max, 1, 1);
-        //slider.gameObject.SetActive(h < max);
-        //slider.value = h;
-        //slider.maxValue = max;
+        if(h <= 0f)
+        {
+            Destroy(healthbar);
+        }
 
-        //slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
     }
     void Update()
     {

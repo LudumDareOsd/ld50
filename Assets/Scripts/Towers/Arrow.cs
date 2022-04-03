@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class Arrow : MonoBehaviour, Projectile
-{
+public class Arrow : MonoBehaviour, Projectile {
     public float damage = 5f;
     public float speed = 0.1f;
     public GameObject animation;
 
     private BaseEnemy target;
-    private Vector3 latestTargetPos;
+    private Vector3 latestTargetPos = Vector3.zero;
 
     public void Update() {
         var step = speed * Time.deltaTime;
@@ -46,6 +45,7 @@ public class Arrow : MonoBehaviour, Projectile
 
     public void SetTarget(BaseEnemy enemy) {
         target = enemy;
+        latestTargetPos = target.transform.position;
     }
     public void SetDamage(float damage) {
         this.damage = damage;
