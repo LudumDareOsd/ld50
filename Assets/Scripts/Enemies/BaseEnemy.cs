@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent (typeof(FollowPath))]
 public class BaseEnemy : MonoBehaviour
 {
+    public GameObject BloodSplosion;
+
     [SerializeField]
     public float health = 10f;
     public int money = 10;
@@ -37,6 +39,7 @@ public class BaseEnemy : MonoBehaviour
     {
         GameManager.instance.AddBanished();
         GameManager.instance.AddMoney(money);
+        Instantiate(BloodSplosion, transform.position, transform.rotation);
     }
     
     public virtual int GateCrash()
