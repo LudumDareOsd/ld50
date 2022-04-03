@@ -27,6 +27,15 @@ public class GameManager : MonoBehaviour
 		UIManager.instance.SetHealth(gateHp);
 	}
 
+	public void TakeGateDamage(int amount) {
+		this.gateHp -= amount;
+		UIManager.instance.SetHealth(gateHp);
+
+		if (this.gateHp <= 0) {
+			GameOver();
+		}
+	}
+
 	public void AddMoney(int amount) {
 		money += amount;
 		UIManager.instance.SetMoney(money.ToString());
@@ -44,5 +53,13 @@ public class GameManager : MonoBehaviour
 	public void SetWave(int wave) {
 		this.wave = wave;
 		UIManager.instance.SetWave(1.ToString());
+	}
+
+	public void GameOver() {
+		var score = new Score();
+		score.banished = banished;
+		score.wave = wave;
+
+
 	}
 }
