@@ -102,7 +102,7 @@ public class EnemyManager : MonoBehaviour
                     for (int i = 0; i < wave; i++)
                     {
                         SpawnEnemy(0);
-                        SpawnEnemy(1);
+                        SpawnEnemy(3);
                         SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
                         yield return new WaitForSeconds(.5f);
                     }
@@ -149,6 +149,6 @@ public class EnemyManager : MonoBehaviour
 
     public int EnemiesAlive()
     {
-        return aliveEnemies;
+        return Mathf.Max(aliveEnemies, 0);
     }
 }
