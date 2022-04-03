@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2f1bfdfea25f340bf647b51e1350cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BloodSplosion: {fileID: 3299451865252825124, guid: 979991ef429f55ab5b596e58b2091f7f, type: 3}
   health: 60
   money: 50
   gateDamage: 10

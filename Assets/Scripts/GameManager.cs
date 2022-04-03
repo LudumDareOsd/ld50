@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
     public void TakeGateDamage(int amount) {
         this.gateHp -= amount;
         UIManager.instance.SetHealth(gateHp);
-
+        SFXManager.Instance.PlayGateDamage();
         if (this.gateHp <= 0) {
             GameOver();
         }

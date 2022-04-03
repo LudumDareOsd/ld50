@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9070724102226985532, guid: 7578cf9e2059dc34db8a838568ca70f7, type: 3}
       propertyPath: switchTime
-      value: 0.5
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7578cf9e2059dc34db8a838568ca70f7, type: 3}
