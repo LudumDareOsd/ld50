@@ -5,22 +5,23 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
+    public GameObject healthbarPrefab;
     public Color low, high;
     public Vector3 offset;
 
-    private GameObject fg;
-    private GameObject bg;
+    private GameObject healthbar;
 
     void Start()
     {
-        //fg = transform.Find("FG").gameObject;
-        //bg = transform.Find("BG").gameObject;
+        healthbar = Instantiate(healthbarPrefab);
+        healthbar.SetActive(false);
     }
 
     public void SetHealth(float h, float max)
     {
-        //enabled = h < max;
+        healthbar.SetActive(h < max && h > 0);
 
+        healthbar.transform.localScale = new Vector3(h / max, 1, 1);
         //slider.gameObject.SetActive(h < max);
         //slider.value = h;
         //slider.maxValue = max;
@@ -29,6 +30,6 @@ public class Healthbar : MonoBehaviour
     }
     void Update()
     {
-        //slider.transform.position = Camera.main.WorldToScreenPoint(transform.position + offset);
+        healthbar.transform.position = transform.position - offset;
     }
 }

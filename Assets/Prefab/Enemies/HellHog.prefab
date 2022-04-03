@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.7
+  moveSpeed: 0.8
   accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
@@ -172,7 +172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  money: 10
+  money: 40
+  gateDamage: 10
 --- !u!114 &-3882955022254566735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1574cc214b834d14ca4d1fc268a46835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 0}
+  healthbarPrefab: {fileID: 6721137448973950211, guid: 85589980794817945969dfee01bcb766, type: 3}
   low: {r: 1, g: 0, b: 0, a: 0}
   high: {r: 0, g: 0.7264151, b: 0.03433682, a: 0}
-  offset: {x: 0, y: -0.73, z: 0}
+  offset: {x: 0, y: -0.21, z: 0}

@@ -51,7 +51,8 @@ public class FollowPath : MonoBehaviour
         {
             if(currentTarget.gameObject.GetComponent<Waypoint>().endPoint) {
                 // The End Is Nigh
-                Destroy(gameObject);
+                //Destroy(gameObject);
+                GetComponent<BaseEnemy>().Kill();
             }
 
             currentTarget = currentTarget.gameObject.GetComponent<Waypoint>().GetNextWaypoint();
@@ -62,7 +63,8 @@ public class FollowPath : MonoBehaviour
     public void TriggerSlowdown()
     {
         slowdown = true;
-        StartCoroutine(RemoveSlowness(3f));
+        StopAllCoroutines();
+        StartCoroutine(RemoveSlowness(2f));
     }
 
     public int GetDirection()
