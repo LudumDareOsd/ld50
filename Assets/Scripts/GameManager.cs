@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	private int money = 200;
 	private int wave = 0;
 	private int banished = 0;
+	private int gateHp = 100;
 
 	private void Awake() {
 
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
 		UIManager.instance.SetMoney(money.ToString());
 		UIManager.instance.SetWave(1.ToString());
 		UIManager.instance.SetBanished(banished.ToString());
+		UIManager.instance.SetHealth(gateHp);
 	}
 
 	public void AddMoney(int amount) {

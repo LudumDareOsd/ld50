@@ -11,6 +11,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     private GameObject outline;
     private GameObject priceText;
     private Image image;
+    private Color startColor;
 
     private void Awake() {
         this.outline = transform.Find("Outline").gameObject;
@@ -18,6 +19,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 
         this.priceText = transform.Find("Price").gameObject;
         this.priceText.GetComponent<TextMeshProUGUI>().text = price.ToString();
+        this.startColor = this.priceText.GetComponent<TextMeshProUGUI>().color;
 
         this.image = GetComponent<Image>();
     }
@@ -25,8 +27,11 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     void Update() {
         if (GameManager.instance.GetMoney() >= price) {
             this.image.color = new Color(1f, 1f, 1f);
+            this.priceText.GetComponent<TextMeshProUGUI>().color = this.startColor;
         } else {
             this.image.color = new Color(0.5f, 0.5f, 0.5f);
+
+            this.priceText.GetComponent<TextMeshProUGUI>().color = this.startColor / 2;
         }
     }
 
