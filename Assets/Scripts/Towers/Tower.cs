@@ -13,13 +13,18 @@ public class Tower : MonoBehaviour {
     public int level2Damage = 5;
     public int level3Damage = 7;
 
+    public Sprite level2Sprite;
+    public Sprite level3Sprite;
+
     private int level = 1;
 
     private float reload = 0f;
     private TargetSeeker targetSeeker;
     private SpriteRenderer uppgradeSr;
+    private SpriteRenderer sr;
     private BoxCollider2D uppgradeColl;
     private void Awake() {
+        sr = GetComponent<SpriteRenderer>();
         targetSeeker = GetComponentInChildren<TargetSeeker>();
         uppgradeSr = transform.Find("UpgradeCross").GetComponent<SpriteRenderer>();
         uppgradeColl = transform.Find("UpgradeCross").GetComponent<BoxCollider2D>();
@@ -69,6 +74,7 @@ public class Tower : MonoBehaviour {
         if (level == 1) {
             if (GameManager.instance.GetMoney() >= uppgradePrice1) {
                 this.targetSeeker.GetComponent<CircleCollider2D>().radius += 0.2f;
+                this.sr.sprite = level2Sprite;
 
                 GameManager.instance.AddMoney(-uppgradePrice1);
                 level++;
@@ -76,7 +82,7 @@ public class Tower : MonoBehaviour {
         } else if (level == 2) {
             if (GameManager.instance.GetMoney() >= uppgradePrice2) {
                 this.targetSeeker.GetComponent<CircleCollider2D>().radius += 0.2f;
-
+                this.sr.sprite = level3Sprite;
                 GameManager.instance.AddMoney(-uppgradePrice2);
                 level++;
             }
