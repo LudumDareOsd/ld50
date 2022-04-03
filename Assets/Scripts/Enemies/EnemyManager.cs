@@ -33,6 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies(int wave)
     {
+        yield return new WaitForSeconds(2f);
         var waves = 3;
         while (waves-- > 0)
         {
@@ -95,6 +96,7 @@ public class EnemyManager : MonoBehaviour
                     SpawnEnemy(1);
                     yield return new WaitForSeconds(.5f);
                     SpawnEnemy(3);
+                    SpawnEnemy(3);
                 break;
                 }
                 default:
@@ -132,13 +134,14 @@ public class EnemyManager : MonoBehaviour
         {
             var prefab = enemyPrefabs[type];
             var spawn = Instantiate(prefab, spawnPos, transform.rotation);
-            spawn.GetComponent<BaseEnemy>().TriggerSlowdown();
+            spawn.GetComponent<BaseEnemy>().Spawn(GameManager.instance.Wave());
         }
         else
         {
             //var prefab = enemyPrefabs[Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave))];
             var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
             var spawn = Instantiate(prefab, spawnPos, transform.rotation);
+            spawn.GetComponent<BaseEnemy>().Spawn(GameManager.instance.Wave());
         }
     }
 
