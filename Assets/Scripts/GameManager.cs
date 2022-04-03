@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public static Score score = new Score { banished = 0, wave = 0 };
     public bool started;
-    private int money = 2000;
+    private int money = 200;
     private int wave = 0;
     private int banished = 0;
     private int gateHp = 100;
