@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface Projectile
 {
-    void SetTarget(Enemy enemy);
+    void SetTarget(BaseEnemy enemy);
 }

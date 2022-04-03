@@ -5,7 +5,7 @@ public class Arrow : MonoBehaviour, Projectile
     public float damage = 5f;
     public float speed = 0.1f;
 
-    private Enemy target;
+    private BaseEnemy target;
     private Vector3 latestTargetPos;
 
     public void Update() {
@@ -42,7 +42,7 @@ public class Arrow : MonoBehaviour, Projectile
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 10f);
     }
 
-    public void SetTarget(Enemy enemy) {
+    public void SetTarget(BaseEnemy enemy) {
         target = enemy;
     }
 

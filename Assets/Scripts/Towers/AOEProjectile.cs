@@ -8,7 +8,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
     public float speed = 0.1f;
     public float aoeRadius = 0.5f;
 
-    private Enemy target;
+    private BaseEnemy target;
     private Vector3 latestTargetPos;
     private ContactFilter2D contactFilter;
     private CircleCollider2D targetCollider;
@@ -45,7 +45,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
                 targetCollider.OverlapCollider(contactFilter, colliders);
 
                 foreach (var collider in colliders) {
-                    collider.GetComponent<Enemy>().TakeDamage(damage);
+                    collider.GetComponent<BaseEnemy>().TakeDamage(damage);
                 }
 
                 Destroy(gameObject);
@@ -53,7 +53,7 @@ public class AOEProjectile : MonoBehaviour, Projectile {
         }
     }
 
-    public void SetTarget(Enemy enemy) {
+    public void SetTarget(BaseEnemy enemy) {
         target = enemy;
     }
 }

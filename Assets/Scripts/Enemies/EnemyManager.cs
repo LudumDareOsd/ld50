@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
-    public Transform[] enemies;
 
     public static EnemyManager instance;
 
@@ -23,12 +22,12 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
-        // SFXManager.Instance.PlayHorn();
+        SFXManager.Instance.PlayHorn();
+        GameManager.instance.SetWave(1);
 
-        while(true)
+        while (true)
         {
             var prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
             var spawn = Instantiate(prefab, transform);
             // var follow = spawn.GetComponent<FollowPath>();
             // var enemy = spawn.GetComponent<Enemy>();

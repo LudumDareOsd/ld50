@@ -5,7 +5,7 @@ using UnityEngine;
 public class TargetSeeker : MonoBehaviour
 {
 	public float range;
-	private Enemy target = null;
+	private BaseEnemy target = null;
 	private CircleCollider2D targetCollider;
 	private ContactFilter2D contactFilter;
 
@@ -18,7 +18,7 @@ public class TargetSeeker : MonoBehaviour
 		contactFilter.useTriggers = true;
 	}
 
-	public Enemy GetTarget() {
+	public BaseEnemy GetTarget() {
 		return target;
 	}
 
@@ -28,11 +28,11 @@ public class TargetSeeker : MonoBehaviour
 			var colliders = new List<Collider2D>();
 			targetCollider.OverlapCollider(contactFilter, colliders);
 
-			Enemy farthestEnemy = null;
+			BaseEnemy farthestEnemy = null;
 
 			foreach (var collider in colliders) {
 
-				var enemy = collider.gameObject.GetComponent<Enemy>();
+				var enemy = collider.gameObject.GetComponent<BaseEnemy>();
 
 				if (farthestEnemy == null) {
 					farthestEnemy = enemy;
@@ -51,7 +51,7 @@ public class TargetSeeker : MonoBehaviour
 			var isWithinRange = false;
 
 			foreach (var collider in colliders) {
-				var enemyColl = collider.GetComponent<Enemy>();
+				var enemyColl = collider.GetComponent<BaseEnemy>();
 
 				if (enemyColl.Equals(target)) {
 					isWithinRange = true;

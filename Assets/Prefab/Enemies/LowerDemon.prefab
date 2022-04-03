@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1194878360926915497}
   - component: {fileID: 5106739103808934055}
   - component: {fileID: 1194878360926915498}
-  - component: {fileID: 1194878360926915499}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
   - component: {fileID: -8550336292977150255}
+  - component: {fileID: 5633627193638307718}
   m_Layer: 7
   m_Name: LowerDemon
   m_TagString: Untagged
@@ -108,19 +108,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1194878360926915499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194878360926915501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6172a3cb5c8e9cba6aca6651ae7ba449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Health: 10
 --- !u!114 &1194878360926915500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +158,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &5633627193638307718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194878360926915501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5419c8774a613c341964d1924c3de124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 20
+  money: 10

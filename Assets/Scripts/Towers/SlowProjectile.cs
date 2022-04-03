@@ -8,7 +8,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
     public float speed = 0.1f;
     public float aoeRadius = 0.5f;
 
-    private Enemy target;
+    private BaseEnemy target;
     private Vector3 latestTargetPos;
     private ContactFilter2D contactFilter;
     private CircleCollider2D targetCollider;
@@ -48,7 +48,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
                 targetCollider.OverlapCollider(contactFilter, colliders);
 
                 foreach (var collider in colliders) {
-                    var enemy = collider.GetComponent<Enemy>();
+                    var enemy = collider.GetComponent<BaseEnemy>();
                     enemy.TakeDamage(damage);
                     enemy.TriggerSlowdown();
                 }
@@ -65,7 +65,7 @@ public class SlowProjectile : MonoBehaviour, Projectile {
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * 10f);
     }
 
-    public void SetTarget(Enemy enemy) {
+    public void SetTarget(BaseEnemy enemy) {
         target = enemy;
     }
 }
