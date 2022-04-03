@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7034837724524479088, guid: 14511ae31509601458aba03e25c2473e, type: 3}
+  - {fileID: -1135304659054725246, guid: 14511ae31509601458aba03e25c2473e, type: 3}
+  - {fileID: -3174481022077434955, guid: 14511ae31509601458aba03e25c2473e, type: 3}
+  - {fileID: 8003297397633128955, guid: 14511ae31509601458aba03e25c2473e, type: 3}

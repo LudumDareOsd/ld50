@@ -13,11 +13,10 @@ GameObject:
   - component: {fileID: 1194878360926915498}
   - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
-  - component: {fileID: 5915871412767542194}
-  - component: {fileID: 6036374432328112883}
-  - component: {fileID: -3882955022254566735}
+  - component: {fileID: 8173586817325258565}
+  - component: {fileID: 3859413064846137043}
   m_Layer: 7
-  m_Name: HellHog
+  m_Name: HellPriest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.7
+  moveSpeed: 0.2
   accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
@@ -136,14 +135,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
-  - {fileID: -2864061005456398757, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  - {fileID: -2041469002773673845, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  - {fileID: -2701729574130029927, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  - {fileID: -2641289975660960506, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  - {fileID: 5974394225070375687, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
-  - {fileID: 7251178696337941055, guid: d14d31469ef9ff74caddade98c8993eb, type: 3}
+  - {fileID: 5215480337739278210, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
+  - {fileID: 2874419939277570167, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
+  - {fileID: 3202670689218668994, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
+  - {fileID: 7477303634979346281, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
+  - {fileID: -374283298646676929, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
+  - {fileID: -720348578573525605, guid: 782716c90e99d47478547d8d8b82708b, type: 3}
   switchTime: 0.35
---- !u!58 &5915871412767542194
+--- !u!58 &8173586817325258565
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,13 +152,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &6036374432328112883
+--- !u!114 &3859413064846137043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,24 +167,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1194878360926915501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c565734a6cf93654d884191bf6ecf072, type: 3}
+  m_Script: {fileID: 11500000, guid: a38a42ce6ad43304280a17e25d0656b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
-  money: 10
---- !u!114 &-3882955022254566735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194878360926915501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1574cc214b834d14ca4d1fc268a46835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 0}
-  low: {r: 1, g: 0, b: 0, a: 0}
-  high: {r: 0, g: 0.7264151, b: 0.03433682, a: 0}
-  offset: {x: 0, y: -0.73, z: 0}
+  health: 200
+  money: 200
