@@ -17,7 +17,7 @@ public class BaseEnemy : MonoBehaviour
     {
         maxHealth = health;
         //hb = gameObject.AddComponent(typeof(Healthbar)) as Healthbar;
-        //hb = GetComponent<Healthbar>();
+        hb = GetComponent<Healthbar>();
         //hb.low = Color.red;
         //hb.high = Color.green;
     }
@@ -25,7 +25,7 @@ public class BaseEnemy : MonoBehaviour
     public virtual void TakeDamage(float damage)
     {
         health -= damage;
-        //hb.SetHealth(health, maxHealth);
+        hb.SetHealth(health, maxHealth);
         if (health <= 0.0f)
         {
             OnDeath();
@@ -41,11 +41,16 @@ public class BaseEnemy : MonoBehaviour
     
     public virtual int GateCrash()
     {
+        Kill();
         // TODO: Trigger SPLOSION
-        TakeDamage(health);
         return gateDamage;
     }
-    
+
+    public void Kill()
+    {
+        TakeDamage(health);
+    }
+
     public float GetAccumulatedDistance()
     {
         return GetComponent<FollowPath>().accumulatedDistance;
