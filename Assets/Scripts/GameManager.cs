@@ -100,8 +100,8 @@ public class GameManager : MonoBehaviour {
         Destroy(door);
         PlayerManager.instance.HideAll();
 
-        StartCoroutine(delayExit());
         GameObject.Find("ThemeSong").GetComponent<Themesong>().ToneOutMusic();
+        StartCoroutine(delayExit());
     }
 
     IEnumerator delayExit() {
