@@ -17,6 +17,8 @@ public class SFXManager : MonoBehaviour
 
     public AudioSource slowImpactAudioSource;
 
+    public AudioSource AllIsLost;
+
     private bool isUsingBeingSource;
 
     private bool isUsingSingleImpactSource;
@@ -44,6 +46,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip WaveStartHorn;
 
     public AudioClip GateDamage;
+
 
     private void Awake()
     {
@@ -174,9 +177,15 @@ public class SFXManager : MonoBehaviour
         {
             StartCoroutine(PlayGateDamageDebounced(volume));
         }
-        
+
     }
 
+    public void PlayAllIsLost()
+    {
+        AllIsLost.volume = 0.5f;
+        AllIsLost.loop = false;
+        AllIsLost.Play();
+    }
 
 
     // Start is called before the first frame update

@@ -101,6 +101,7 @@ public class GameManager : MonoBehaviour {
         PlayerManager.instance.HideAll();
 
         GameObject.Find("ThemeSong").GetComponent<Themesong>().ToneOutMusic();
+        SFXManager.Instance.PlayAllIsLost();
         StartCoroutine(delayExit());
     }
 

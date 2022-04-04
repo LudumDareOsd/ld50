@@ -53,7 +53,7 @@ public class Themesong : MonoBehaviour
 
     public void ToneOutMusic()
     {
-        StartCoroutine(LowerMusic(ThemeSongSource.volume, 0.5f));
+        StartCoroutine(LowerMusic(ThemeSongSource.volume, 0.3f));
     }
 
     private IEnumerator LowerMusic(float currentVolume, float threshHold)
