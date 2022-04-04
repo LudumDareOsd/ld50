@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance;
+    public AudioSource ThemeSongSource;
     public static Score score = new Score { banished = 0, wave = 0 };
     public bool started;
     public bool gameOver = false;
@@ -69,7 +70,30 @@ public class GameManager : MonoBehaviour {
 
     public void SetWave(int wave) {
         this.wave = wave;
+        if (wave == 1)
+        {
+            StartCoroutine(PlayTheme());
+        }
         UIManager.instance.SetWave(wave.ToString());
+    }
+
+    public IEnumerator PlayTheme()
+    {
+        ThemeSongSource.volume = 0.0f;
+        ThemeSongSource.loop = true;
+        yield return new WaitForSeconds(3f);
+        ThemeSongSource.Play();
+        StartCoroutine(ToneInMusic(0.1f));
+    }
+
+    private IEnumerator ToneInMusic(float currentVolume)
+    {
+        ThemeSongSource.volume = currentVolume;
+        yield return new WaitForSeconds(0.5f);
+        if (currentVolume < 1.0f)
+        {
+            StartCoroutine(ToneInMusic(currentVolume + 0.1f));
+        }
     }
 
     public int Wave()
@@ -100,4 +124,5 @@ public class GameManager : MonoBehaviour {
 
         UnityEngine.SceneManagement.SceneManager.LoadScene("end");
     }
+
 }
