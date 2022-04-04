@@ -17,6 +17,8 @@ public class SFXManager : MonoBehaviour
 
     public AudioSource slowImpactAudioSource;
 
+    public AudioSource AllIsLost;
+
     private bool isUsingBeingSource;
 
     private bool isUsingSingleImpactSource;
@@ -24,6 +26,8 @@ public class SFXManager : MonoBehaviour
     private bool isUsingImpactAoeSource;
 
     private bool isUsingSlowImpactSource;
+
+    private bool isPlayingGateDamageSound;
 
     public AudioClip[] singleImpacts;
 
@@ -42,6 +46,7 @@ public class SFXManager : MonoBehaviour
     public AudioClip WaveStartHorn;
 
     public AudioClip GateDamage;
+
 
     private void Awake()
     {
@@ -155,11 +160,32 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayGateDamageDebounced(float volume)
+    {
+        defaultSource.PlayOneShot(GateDamage, volume);
+        isPlayingGateDamageSound = true;
+        yield return new WaitForSeconds(1);
+        isPlayingGateDamageSound = false;
+    }
+
 
     public void PlayHorn(float volume = 1f) => defaultSource.PlayOneShot(WaveStartHorn, volume);
 
-    public void PlayGateDamage(float volume = 1f) => defaultSource.PlayOneShot(GateDamage, volume);
+    public void PlayGateDamage(float volume = 1f)
+    {
+        if (!isPlayingGateDamageSound)
+        {
+            StartCoroutine(PlayGateDamageDebounced(volume));
+        }
 
+    }
+
+    public void PlayAllIsLost()
+    {
+        AllIsLost.volume = 0.5f;
+        AllIsLost.loop = false;
+        AllIsLost.Play();
+    }
 
 
     // Start is called before the first frame update
