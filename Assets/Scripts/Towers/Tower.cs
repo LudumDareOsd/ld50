@@ -38,6 +38,10 @@ public class Tower : MonoBehaviour {
 
     public void Update() {
 
+        if(GameManager.instance.gameOver) {
+            return;
+        }
+
         if (reload > 0) {
             reload -= Time.deltaTime;
         }
@@ -55,6 +59,7 @@ public class Tower : MonoBehaviour {
     }
 
     private void Fire() {
+
         Vector3 vectorToTarget = targetSeeker.GetTarget().transform.position - transform.position;
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle + 270, Vector3.forward);

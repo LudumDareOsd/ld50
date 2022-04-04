@@ -49,6 +49,10 @@ public class PlayerManager : MonoBehaviour {
 
     public void Update() {
 
+        if(GameManager.instance.gameOver) {
+            return;
+        }
+
         Vector3 mousePos = Input.mousePosition;
         {
             var worldpos = Camera.main.ScreenToWorldPoint(mousePos);
@@ -88,7 +92,6 @@ public class PlayerManager : MonoBehaviour {
                 }
             }
 
-
             foreach (var t in towers) {
                 if (!t.Equals(clickedTower)) {
                     t.HideUppgrade();
@@ -127,6 +130,12 @@ public class PlayerManager : MonoBehaviour {
             selectedTower.GetComponent<SpriteRenderer>().sprite = null;
             uppgradePrice.SetActive(false);
         }
+    }
+
+    public void HideAll() {
+        tower = null;
+        selectedTower.GetComponent<SpriteRenderer>().sprite = null;
+        uppgradePrice.SetActive(false);
     }
 
     float RoundToNearestGridX(float pos) {
