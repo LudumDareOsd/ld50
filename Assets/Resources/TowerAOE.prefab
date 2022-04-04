@@ -128,8 +128,8 @@ MonoBehaviour:
   reloadSpeed: 1.5
   uppgradePrice1: 400
   uppgradePrice2: 800
-  level2Damage: 6
-  level3Damage: 8
+  level2Damage: 8
+  level3Damage: 10
   level2Sprite: {fileID: 21300000, guid: 6e019331a108aa242a2ff180a52af95c, type: 3}
   level3Sprite: {fileID: 21300000, guid: 23ef0ae689d69f64f8b7d91188acc2c9, type: 3}
 --- !u!1 &2178831122930463312
