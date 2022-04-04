@@ -35,7 +35,7 @@ public class RepairUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     public void OnPointerClick(PointerEventData eventData) {
-        if (GameManager.instance.gameOver) {
+        if (GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 
@@ -45,7 +45,7 @@ public class RepairUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        if (GameManager.instance.gameOver) {
+        if (GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 

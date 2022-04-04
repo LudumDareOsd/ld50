@@ -6,13 +6,18 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public AudioSource ThemeSongSource;
     public static Score score = new Score { banished = 0, wave = 0 };
-    public bool started;
     public bool gameOver = false;
     private int money = 250;
     private int wave = 0;
     private int banished = 0;
     private int gateHp = 100;
+
+    public bool started = false;
+    
     private GameObject door;
+    private GameObject gui;
+    private GameObject overlay;
+    private EnemyManager enemyManager;
 
     private void Awake() {
 
@@ -21,6 +26,9 @@ public class GameManager : MonoBehaviour {
         } else {
             GameManager.instance = this;
             door = GameObject.Find("Door");
+            gui = GameObject.Find("GUI");
+            overlay = GameObject.Find("TitleScreen");
+            enemyManager = GameObject.Find("EnemyManager").GetComponent<EnemyManager>();
         }
     }
 
@@ -29,7 +37,21 @@ public class GameManager : MonoBehaviour {
         UIManager.instance.SetWave(1.ToString());
         UIManager.instance.SetBanished(banished.ToString());
         UIManager.instance.SetHealth(gateHp);
+
+        gui.SetActive(false);
     }
+
+    public void Update() {
+        if (started == false) {
+            if (Input.anyKey) {
+                started = true;
+                gui.SetActive(true);
+                overlay.SetActive(false);
+                enemyManager.StartWave(1);
+            }
+        }
+    }
+
 
     public void AddHp(int amount, int price) {
 
@@ -70,15 +92,13 @@ public class GameManager : MonoBehaviour {
 
     public void SetWave(int wave) {
         this.wave = wave;
-        if (wave == 1)
-        {
+        if (wave == 1) {
             StartCoroutine(PlayTheme());
         }
         UIManager.instance.SetWave(wave.ToString());
     }
 
-    public IEnumerator PlayTheme()
-    {
+    public IEnumerator PlayTheme() {
         ThemeSongSource.volume = 0.0f;
         ThemeSongSource.loop = true;
         yield return new WaitForSeconds(3f);
@@ -86,24 +106,22 @@ public class GameManager : MonoBehaviour {
         StartCoroutine(ToneInMusic(0.1f));
     }
 
-    private IEnumerator ToneInMusic(float currentVolume)
-    {
+    private IEnumerator ToneInMusic(float currentVolume) {
         ThemeSongSource.volume = currentVolume;
         yield return new WaitForSeconds(0.5f);
-        if (currentVolume < 1.0f)
-        {
+        if (currentVolume < 1.0f) {
             StartCoroutine(ToneInMusic(currentVolume + 0.1f));
         }
     }
 
-    public int Wave()
-    {
+    public int Wave() {
         return wave;
     }
 
     public void Restart() {
         score.wave = 0;
         score.banished = 0;
+        started = false;
         UnityEngine.SceneManagement.SceneManager.LoadScene("Main");
     }
 

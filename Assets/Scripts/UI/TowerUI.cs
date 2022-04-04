@@ -23,7 +23,6 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     }
 
     void Update() {
-
         if (GameManager.instance.GetMoney() >= price) {
             this.image.color = new Color(1f, 1f, 1f);
             this.priceText.GetComponent<TextMeshProUGUI>().color = this.startColor;
@@ -36,7 +35,6 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 
     private void UpdatePriceText()
     {
-
         this.priceText = transform.Find("Price").gameObject;
         this.priceText.GetComponent<TextMeshProUGUI>().text = price.ToString();
     }
@@ -50,7 +48,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 
     public void OnPointerClick(PointerEventData eventData) {
 
-        if (GameManager.instance.gameOver) {
+        if (GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 
@@ -66,8 +64,8 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
         }
     }
 
-    public void OnPointerEnter(PointerEventData eventData) {
-        if (GameManager.instance.gameOver) {
+    public void OnPointerEnter(PointerEventData eventData) {  
+        if (GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 

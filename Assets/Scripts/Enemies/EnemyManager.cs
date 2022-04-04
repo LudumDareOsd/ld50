@@ -17,8 +17,6 @@ public class EnemyManager : MonoBehaviour
         } else {
             EnemyManager.instance = this;
         }
-
-        StartWave(1);
     }
 
     public void StartWave(int wave)

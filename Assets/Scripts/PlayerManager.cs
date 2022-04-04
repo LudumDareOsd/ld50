@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour {
             selectedTower = GameObject.Find("SelectedTower");
             mouseCollider = GameObject.Find("MouseCollider");
             uppgradePrice = GameObject.Find("UppgradePrice");
+
             uppgradePrice.SetActive(false);
 
             contactFilter = new ContactFilter2D();
@@ -49,7 +50,7 @@ public class PlayerManager : MonoBehaviour {
 
     public void Update() {
 
-        if(GameManager.instance.gameOver) {
+        if(GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 

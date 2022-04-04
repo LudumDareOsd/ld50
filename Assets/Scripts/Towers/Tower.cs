@@ -38,7 +38,7 @@ public class Tower : MonoBehaviour {
 
     public void Update() {
 
-        if(GameManager.instance.gameOver) {
+        if(GameManager.instance.gameOver || !GameManager.instance.started) {
             return;
         }
 
