@@ -25,6 +25,8 @@ public class SFXManager : MonoBehaviour
 
     private bool isUsingSlowImpactSource;
 
+    private bool isPlayingGateDamageSound;
+
     public AudioClip[] singleImpacts;
 
     public AudioClip[] slowImpacts;
@@ -155,10 +157,25 @@ public class SFXManager : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayGateDamageDebounced(float volume)
+    {
+        defaultSource.PlayOneShot(GateDamage, volume);
+        isPlayingGateDamageSound = true;
+        yield return new WaitForSeconds(1);
+        isPlayingGateDamageSound = false;
+    }
+
 
     public void PlayHorn(float volume = 1f) => defaultSource.PlayOneShot(WaveStartHorn, volume);
 
-    public void PlayGateDamage(float volume = 1f) => defaultSource.PlayOneShot(GateDamage, volume);
+    public void PlayGateDamage(float volume = 1f)
+    {
+        if (!isPlayingGateDamageSound)
+        {
+            StartCoroutine(PlayGateDamageDebounced(volume));
+        }
+        
+    }
 
 
 
