@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
+    private float delay = 0f;
 
     private void Awake()
     {
@@ -22,9 +23,13 @@ public class EndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        delay += Time.deltaTime;
+
         if (Input.anyKey)
         {
-            GameManager.instance.Restart();
+            if(delay > 1) {
+                GameManager.instance.Restart();
+            }
         }
         
     }

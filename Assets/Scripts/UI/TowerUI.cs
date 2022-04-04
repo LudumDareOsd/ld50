@@ -23,6 +23,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     }
 
     void Update() {
+
         if (GameManager.instance.GetMoney() >= price) {
             this.image.color = new Color(1f, 1f, 1f);
             this.priceText.GetComponent<TextMeshProUGUI>().color = this.startColor;
@@ -48,6 +49,11 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+
+        if (GameManager.instance.gameOver) {
+            return;
+        }
+
         if(GameManager.instance.GetMoney() >= price) {
             var selectTower = new SelectedTower();
             selectTower.name = tower.name;
@@ -61,6 +67,10 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        if (GameManager.instance.gameOver) {
+            return;
+        }
+
         if (GameManager.instance.GetMoney() >= price) {
             this.outline.SetActive(true);
         }

@@ -6,10 +6,12 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance;
     public static Score score = new Score { banished = 0, wave = 0 };
     public bool started;
+    public bool gameOver = false;
     private int money = 250;
     private int wave = 0;
     private int banished = 0;
     private int gateHp = 100;
+    private GameObject door;
 
     private void Awake() {
 
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour {
             Destroy(this);
         } else {
             GameManager.instance = this;
+            door = GameObject.Find("Door");
         }
     }
 
@@ -92,9 +95,20 @@ public class GameManager : MonoBehaviour {
     public void GameOver() {
         score.wave = wave;
         score.banished = banished;
-        GameObject.Find("ThemeSong").GetComponent<Themesong>().ToneOutMusic();
-        UnityEngine.SceneManagement.SceneManager.LoadScene("end");
+        gameOver = true;
 
+        Destroy(door);
+        PlayerManager.instance.HideAll();
+
+        StartCoroutine(delayExit());
+        GameObject.Find("ThemeSong").GetComponent<Themesong>().ToneOutMusic();
+    }
+
+    IEnumerator delayExit() {
+
+        yield return new WaitForSeconds(7);
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene("end");
     }
 
 }

@@ -68,34 +68,32 @@ public class EnemyManager : MonoBehaviour
                 case 4:
                 {
                     yield return new WaitForSeconds(.5f);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    yield return new WaitForSeconds(.5f);
                     SpawnEnemy(2);
+                    SpawnEnemy(0);
+                    yield return new WaitForSeconds(.5f);
+                    SpawnEnemy(0);
                     SpawnEnemy(2);
                 break;
                 }
                 case 5:
                 {
-                    yield return new WaitForSeconds(.5f);
+                    for (int i = 0; i < 8; i++)
+                    {
+                        SpawnEnemy(0);
+                        yield return new WaitForSeconds(.5f);
+                    }
                     SpawnEnemy(2);
-                    SpawnEnemy(2);
-                    yield return new WaitForSeconds(.5f);
-                    SpawnEnemy(3);
-                break;
+                    break;
                 }
                 case 6:
                 {
-                    yield return new WaitForSeconds(.5f);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    SpawnEnemy(1);
-                    yield return new WaitForSeconds(.5f);
-                    SpawnEnemy(3);
+                    for (int i = 0; i < 4; i++)
+                    {
+                        SpawnEnemy(0);
+                        SpawnEnemy(1);
+                        yield return new WaitForSeconds(.5f);
+                    }
+                    yield return new WaitForSeconds(1f);
                     SpawnEnemy(3);
                 break;
                 }
@@ -127,6 +125,7 @@ public class EnemyManager : MonoBehaviour
                             SpawnEnemy(0);
                             SpawnEnemy(1);
                             SpawnEnemy(2);
+                            SpawnEnemy(3);
                             SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
                             yield return new WaitForSeconds(.5f);
                         }

@@ -35,12 +35,20 @@ public class RepairUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandle
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+        if (GameManager.instance.gameOver) {
+            return;
+        }
+
         if (GameManager.instance.GetMoney() >= price) {
             GameManager.instance.AddHp(20, price);
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        if (GameManager.instance.gameOver) {
+            return;
+        }
+
         if (GameManager.instance.GetMoney() >= price) {
             this.outline.SetActive(true);
         }

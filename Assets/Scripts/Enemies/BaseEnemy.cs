@@ -27,7 +27,13 @@ public class BaseEnemy : MonoBehaviour
     public virtual void Spawn(int wave)
     {
         this.health += (this.health / 3.5f * (wave * 0.85f));
-    }    
+        if(wave >= 8)
+        {
+            // Above wave 8, adds one tenth of their movespeed for every succesive wave
+            GetComponent<FollowPath>().moveSpeed += (GetComponent<FollowPath>().moveSpeed * (0.1f * (wave - 7)));
+        }
+
+    }
 
     public virtual void TakeDamage(float damage)
     {
