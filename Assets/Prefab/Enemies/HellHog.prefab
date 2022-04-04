@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1194878360926915497}
   - component: {fileID: 5106739103808934055}
   - component: {fileID: 1194878360926915498}
-  - component: {fileID: 1194878360926915500}
   - component: {fileID: 6898549042927618139}
   - component: {fileID: 5915871412767542194}
   - component: {fileID: 6036374432328112883}
+  - component: {fileID: 1194878360926915500}
   - component: {fileID: -3882955022254566735}
   m_Layer: 7
   m_Name: HellHog
@@ -109,20 +109,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1194878360926915500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194878360926915501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0.8
-  accumulatedDistance: 0
 --- !u!114 &6898549042927618139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +161,21 @@ MonoBehaviour:
   health: 30
   money: 40
   gateDamage: 10
+--- !u!114 &1194878360926915500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194878360926915501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d213e68cca6c0a64bb07162962e6c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.8
+  accumulatedDistance: 0
+  slowdown: 0
 --- !u!114 &-3882955022254566735
 MonoBehaviour:
   m_ObjectHideFlags: 0

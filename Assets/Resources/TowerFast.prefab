@@ -187,10 +187,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 3156097460778753263, guid: 24f4bd146a7e75f4b8a21708077f18a6, type: 3}
   reloadSpeed: 0.3
-  uppgradePrice1: 200
-  uppgradePrice2: 500
-  level2Damage: 7
-  level3Damage: 10
+  uppgradePrice1: 150
+  uppgradePrice2: 350
+  level2Damage: 5
+  level3Damage: 7
   level2Sprite: {fileID: 21300000, guid: cb7663ce6f865fc4ebe74c2a76dc125d, type: 3}
   level3Sprite: {fileID: 21300000, guid: eb7cc3cd6c1b68a4b81b86f053f691df, type: 3}
 --- !u!1 &6564982059241513002
