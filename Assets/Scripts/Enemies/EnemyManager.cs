@@ -33,7 +33,7 @@ public class EnemyManager : MonoBehaviour
 
     public IEnumerator SpawnEnemies(int wave)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         var waves = 3;
         while (waves-- > 0)
         {
@@ -101,14 +101,38 @@ public class EnemyManager : MonoBehaviour
                 }
                 default:
                 {
-                    for (int i = 0; i < wave; i++)
+                    if (wave < 10)
                     {
-                        SpawnEnemy(0);
-                        SpawnEnemy(3);
-                        SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
-                        yield return new WaitForSeconds(.5f);
+                        for (int i = 0; i < wave; i++)
+                        {
+                            SpawnEnemy(0);
+                            SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
+                            yield return new WaitForSeconds(.5f);
+                        }
                     }
-                   break;
+                    else if (wave < 14)
+                    {
+                        for (int i = 0; i < wave; i++)
+                        {
+                            SpawnEnemy(0);
+                            SpawnEnemy(1);
+                            SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
+                            yield return new WaitForSeconds(.5f);
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 0; i < wave; i++)
+                        {
+                            SpawnEnemy(0);
+                            SpawnEnemy(1);
+                            SpawnEnemy(2);
+                            SpawnEnemy(Random.Range(0, Mathf.Min(enemyPrefabs.Length, wave)));
+                            yield return new WaitForSeconds(.5f);
+                        }
+
+                    }
+                        break;
                 }
                     
             }

@@ -54,6 +54,7 @@ public class TowerUI : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
             selectTower.uiName = gameObject.name;
             selectTower.price = price;
             selectTower.sprite = tower.GetComponentInChildren<SpriteRenderer>().sprite;
+            selectTower.position = tower.transform.position;
 
             PlayerManager.instance.SelectTower(selectTower);
         }

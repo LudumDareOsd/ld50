@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f507a43580b6bf149a2f1ae1450c6be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 4
   speed: 1.5
   aoeRadius: 0.5
   animation: {fileID: 6328012353241096201, guid: 55eabc79d13d41e47a1733ca41bc3fe9, type: 3}

@@ -130,7 +130,7 @@ MonoBehaviour:
   damage: 1
   slow: 1
   speed: 1.5
-  aoeRadius: 0.5
+  aoeRadius: 0.4
   animation: {fileID: 1258380067143408551, guid: 6e7da3ff7a9a3094da275cdf4567e0d2, type: 3}
 --- !u!58 &2187919219307556235
 CircleCollider2D:
